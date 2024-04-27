@@ -1,17 +1,7 @@
 package presentacion;
 
 import excepciones.*;
-import negocio.Administrador;
-import negocio.Automovil;
-import negocio.ChoferContratado;
-import negocio.Cliente;
-import negocio.Combi;
-import negocio.Moto;
-import negocio.Pedido;
-import negocio.Sistema;
-import negocio.Usuario;
-import negocio.Vehiculo;
-import negocio.factoryVehiculos;
+import negocio.*;
 
 public class Test {
 
@@ -66,12 +56,12 @@ public class Test {
     admin.ListadoClientes();
 
     try {
-      c1.solicitaViaje(new Pedido("Estandar", true, true, "02/01/2020 13:12",
+      c1.solicitaViaje(new Pedido(Zona.ESTANDAR, true, true, "02/01/2020 13:12",
                                   2)); // con mascota
-      c1.solicitaViaje(new Pedido("Calle sin asfaltar", false, true,
+      c1.solicitaViaje(new Pedido(Zona.SIN_ASFALTAR, false, true,
                                   "02/01/2020 13:13", 7)); // con equipaje
       c1.solicitaViaje(
-          new Pedido("Zona Peligrosa", false, false, "02/01/2020 13:14", 3));
+          new Pedido(Zona.PELIGROSA, false, false, "02/01/2020 13:14", 3));
     } catch (PedidoInvalidoException e) {
       System.out.println(e);
     } catch (SinVehiculosDisponiblesException e) {

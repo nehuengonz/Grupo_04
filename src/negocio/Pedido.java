@@ -1,14 +1,14 @@
 package negocio;
 
 public class Pedido {
-  private String zona;
+  private Zona zona;
   private boolean SPF; // service pet friendly
   private boolean usaBaul;
   private String fecha;
   private Integer cantPasajeros;
   private Cliente cliente;
 
-  public Pedido(String zona, boolean SPF, boolean usaBaul, String fecha,
+  public Pedido(Zona zona, boolean SPF, boolean usaBaul, String fecha,
                 Integer cantPasajeros) {
     super();
     this.zona = zona;
@@ -18,7 +18,7 @@ public class Pedido {
     this.cantPasajeros = cantPasajeros;
   }
 
-  public String getZona() { return zona; }
+  public Zona getZona() { return zona; }
 
   public boolean isSPF() { return SPF; }
 
