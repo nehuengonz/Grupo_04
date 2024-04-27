@@ -10,6 +10,7 @@ negocio/Sistema.class
 negocio/Zona.class
 negocio/Combi.class
 presentacion/Test.class
+negocio/Viaje.class
 negocio/Iviaje.class
 negocio/ViajeZonaPeligrosa.class
 negocio/ChoferPermanente.class
