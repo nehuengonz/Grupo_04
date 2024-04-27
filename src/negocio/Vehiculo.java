@@ -16,9 +16,9 @@ public abstract class Vehiculo {
     this.baul = baul;
   }
   public Integer getPrioridad(Pedido pedido) {
-    verificarCantPasajeros(pedido.getCantPasajeros());
-    verificarBaul(pedido.getUsaBaul());
-    verificarPF(pedido.isSPF());
+    if (!verificarCantPasajeros(pedido.getCantPasajeros()) ||
+        !verificarBaul(pedido.getUsaBaul()) || !verificarPF(pedido.isSPF()))
+      return null;
     return calculoPrioridad(pedido);
   }
   abstract protected boolean verificarCantPasajeros(Integer cantPasajeros);
