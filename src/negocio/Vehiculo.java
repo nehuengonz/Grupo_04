@@ -16,15 +16,15 @@ public abstract class Vehiculo {
     this.baul = baul;
   }
   public Integer getPrioridad(Pedido pedido) {
-    verificarCantPasajeros(pedido.cant_pasajeros);
-    verificarBaul(pedido.usaBaul);
-    verificarPF(pedido.SPF);
+    verificarCantPasajeros(pedido.getCantPasajeros());
+    verificarBaul(pedido.getUsaBaul());
+    verificarPF(pedido.isSPF());
     return calculoPrioridad(pedido);
   }
-  protected boolean verificarCantPasajeros(Integer cantPasajeros);
-  protected boolean verificarBaul(boolean usaBaul);
-  protected boolean verificarPF(boolean PF);
-  protected Integer calculoPrioridad(Pedido pedido);
+  abstract protected boolean verificarCantPasajeros(Integer cantPasajeros);
+  abstract protected boolean verificarBaul(boolean usaBaul);
+  abstract protected boolean verificarPF(boolean PF);
+  abstract protected Integer calculoPrioridad(Pedido pedido);
   public Vehiculo() { super(); }
 
   public void setNropatente(String nropatente) { this.nropatente = nropatente; }
