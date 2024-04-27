@@ -50,11 +50,11 @@ public class Sistema {
       throws PedidoInvalidoException, SinVehiculosDisponiblesException {
     if (!pedidoValido(pedido))
       throw new PedidoInvalidoException();
-    if (pedido.getCantPasajeros() > 4) {
-      Combi combi = getCombiDisponible();
-      if (combi == null)
-        throw new SinVehiculosDisponiblesException();
-    }
+    // TODO: crear viaje en estado "solicitado"
+    Vehiculo vehiculo = getVehiculoDisponible(pedido);
+    if (vehiculo == null)
+      throw new SinVehiculosDisponiblesException();
+    // TODO: Asignarle vehiculo al viaje (ahora en estado "con vehiculo")
   }
   private boolean pedidoValido(Pedido pedido) {
     if (pedido.getCantPasajeros() > 10)
@@ -62,6 +62,16 @@ public class Sistema {
     if (pedido.getCantPasajeros() > 4 && pedido.isSPF())
       return false;
     return true;
+  }
+  private Vehiculo getVehiculoDisponible(Pedido pedido) {
+    if (pedido.getCantPasajeros() > 4) {
+      return getCombiDisponible();
+    }
+    if (pedido.getCantPasajeros() > 1 || pedido.isSPF() ||
+        pedido.getUsaBaul()) {
+      return getAutomovilDisponible();
+    }
+    return getMotoDisponible();
   }
   /*
    * Si encuentra una combi disponible la retorna.
@@ -71,6 +81,20 @@ public class Sistema {
     for (Vehiculo v : vehiculos) {
       if (v.isDisponible() && v instanceof Combi)
         return (Combi)v;
+    }
+    return null;
+  }
+  private Automovil getAutomovilDisponible() {
+    for (Vehiculo v : vehiculos) {
+      if (v.isDisponible() && v instanceof Automovil)
+        return (Automovil)v;
+    }
+    return null;
+  }
+  private Moto getMotoDisponible() {
+    for (Vehiculo v : vehiculos) {
+      if (v.isDisponible() && v instanceof Moto)
+        return (Moto)v;
     }
     return null;
   }
