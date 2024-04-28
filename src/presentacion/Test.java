@@ -66,6 +66,8 @@ public class Test {
       System.out.println(e);
     } catch (SinVehiculosDisponiblesException e) {
       System.out.println(e);
+    } catch (SinChoferDisponibleException e) {
+      System.out.println(e);
     }
     // que tendriamos que contemplar en solicitud incoerente??? por que los
     // datos se pasan por constructor o no?

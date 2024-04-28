@@ -17,6 +17,7 @@ negocio/ChoferPermanente.class
 negocio/Usuario.class
 negocio/ViajeEstandar.class
 excepciones/PedidoInvalidoException.class
+excepciones/SinChoferDisponibleException.class
 negocio/factoryVehiculos.class
 negocio/Cliente.class
 negocio/ChoferEmpleado.class

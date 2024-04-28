@@ -1,7 +1,6 @@
 package negocio;
 
-import excepciones.PedidoInvalidoException;
-import excepciones.SinVehiculosDisponiblesException;
+import excepciones.*;
 import java.util.ArrayList;
 
 /*
@@ -44,17 +43,26 @@ public class Sistema {
    * haya vehículos de todos los tipos). Por ejemplo si el pedido tiene más de
    * 10 pasajeros (ningún vehículo puede llevar más de 10). Lanza
    * SinVehiculosDisponiblesException si la razón de rechazar el pedido es que
-   * no hay vehículos del tipo necesario para satisfacer el pedido.
+   * no hay vehículos del tipo necesario para satisfacer el pedido. Si hay
+   * vehículos disponibles se asigna al viaje y pasa a estado 'con vehiculo'.
+   * Finalmente se asigna un chofer al viaje. Si no hay choferes disponibles,
+   * lanza SinChoferDisponibleException. En cambio, si hay un chofer disponible,
+   * se asigna y el viaje pasa a 'iniciado'.
    */
   public void procesarPedido(Pedido pedido)
-      throws PedidoInvalidoException, SinVehiculosDisponiblesException {
+      throws PedidoInvalidoException, SinVehiculosDisponiblesException,
+             SinChoferDisponibleException {
     if (!pedidoValido(pedido))
       throw new PedidoInvalidoException();
-    // TODO: crear viaje en estado "solicitado"
+    Viaje viaje = new Viaje(pedido);
     Vehiculo vehiculo = getVehiculoDisponible(pedido);
     if (vehiculo == null)
       throw new SinVehiculosDisponiblesException();
-    // TODO: Asignarle vehiculo al viaje (ahora en estado "con vehiculo")
+    viaje.setVehiculo(vehiculo);
+    Chofer chofer = getChoferDisponible();
+    if (chofer == null)
+      throw new SinChoferDisponibleException();
+    viaje.setChofer(chofer);
   }
   private boolean pedidoValido(Pedido pedido) {
     if (pedido.getCantPasajeros() > 10)
@@ -95,6 +103,13 @@ public class Sistema {
     for (Vehiculo v : vehiculos) {
       if (v.isDisponible() && v instanceof Moto)
         return (Moto)v;
+    }
+    return null;
+  }
+  private Chofer getChoferDisponible() {
+    for (Chofer c : choferes) {
+      if (!c.getOcupado())
+        return c;
     }
     return null;
   }

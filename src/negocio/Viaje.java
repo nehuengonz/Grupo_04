@@ -7,37 +7,35 @@ class Viaje {
   private Pedido pedido;
   private Chofer chofer;
   private Vehiculo vehiculo;
-  private Zona zona;
-  private boolean SPF;
-  private boolean usaBaul;
-  private Integer cantPasajeros;
   private double distanciaRecorrida;
   private double costo;
 
   /*
-   * Con el constructor se inicializan pedido, zona, SPF, usaBaul y
-   * cantPasajeros. chofer y vehiculo son null hasta que se les asigne un valor
-   * distinto de null por medio de los setters.
+   * Con el constructor se inicializa pedido. chofer y vehiculo son null hasta
+   * que se les asigne un valor distinto de null por medio de los setters.
    * distanciaRecorrida y costo son null inicialmente.
    */
-  public Viaje(Pedido pedido, Zona zona, boolean SPF, boolean usaBaul,
-               Integer cantPasajeros) {
-    this.pedido = pedido;
-    this.zona = zona;
-    this.SPF = SPF;
-    this.usaBaul = usaBaul;
-    this.cantPasajeros = cantPasajeros;
-  }
+  public Viaje(Pedido pedido) { this.pedido = pedido; }
 
   public void setPedido(Pedido pedido) { this.pedido = pedido; }
 
   public Pedido getPedido() { return pedido; }
 
-  public void setChofer(Chofer chofer) { this.chofer = chofer; }
+  public void setChofer(Chofer chofer) {
+    this.chofer = chofer;
+    this.chofer.setOcupado(true);
+  }
 
   public Chofer getChofer() { return chofer; }
 
-  public void setVehiculo(Vehiculo vehiculo) { this.vehiculo = vehiculo; }
+  /*
+   * El vehiculo asignado pasa a no estar disponible (se asigna false a ese
+   * atributo).
+   */
+  public void setVehiculo(Vehiculo vehiculo) {
+    this.vehiculo = vehiculo;
+    this.vehiculo.setDisponible(false);
+  }
 
   public Vehiculo getVehiculo() { return vehiculo; }
 }
