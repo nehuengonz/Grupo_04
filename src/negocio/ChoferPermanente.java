@@ -31,6 +31,6 @@ public class ChoferPermanente extends ChoferEmpleado{
     @Override
     public double getSueldoNeto() {
         // sueldo bruto - aportes jubilatiorios
-        return this.getSueldoBruto() * (1-this.aportes);
+        return this.getSueldoBruto() * (1-this.aportes/100);
     }
 }
