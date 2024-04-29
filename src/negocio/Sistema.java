@@ -110,6 +110,19 @@ public class Sistema {
 
   // devuelve un vehiculo disponible y lo pone como nodisponible, se usa en el
   // factoryvehiculos.java
+  
+
+  public Vehiculo GetVehiculoDisponible(double cantPasajeros,boolean PF,boolean baul) {
+    if (cantPasajeros == 1 && PF==false  && baul==false) {
+        return vehiculoDisponible("Moto");
+      } else if (cantPasajeros <= 4) {
+        return vehiculoDisponible("Automovil");
+      } else if(PF==false){
+        return vehiculoDisponible("Combi");
+      }else{
+        return null;
+      } 
+    }
   public Vehiculo vehiculoDisponible(String clase) {
     Vehiculo aux = null;
     for (Vehiculo act : vehiculos) {
@@ -120,7 +133,6 @@ public class Sistema {
     }
     return aux;
   }
-
   public String toStringChoferes() {
     return "Sistema [choferes=" + choferes + "]";
   }
