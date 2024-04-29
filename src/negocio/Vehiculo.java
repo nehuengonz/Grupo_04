@@ -15,7 +15,11 @@ public abstract class Vehiculo {
     this.PF = PF;
     this.baul = baul;
   }
-  public Integer getPrioridad(Pedido pedido) {
+  /*
+   * Devuelve un Integer indicando el valor de prioridad para el pedido en
+   * cuestión. Si el vehículo no es apto para el pedido retorna null.
+   */
+  static public Integer getPrioridad(Pedido pedido) {
     if (!verificarCantPasajeros(pedido.getCantPasajeros()) ||
         !verificarBaul(pedido.getUsaBaul()) || !verificarPF(pedido.isSPF()))
       return null;

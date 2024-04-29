@@ -10,17 +10,38 @@ class Viaje {
   private double distanciaRecorrida;
   private double costo;
 
+  public double valorBase = 1000;
+
   /*
    * Con el constructor se inicializa pedido. chofer y vehiculo son null hasta
    * que se les asigne un valor distinto de null por medio de los setters.
    * distanciaRecorrida y costo son null inicialmente.
    */
-  public Viaje(Pedido pedido) { this.pedido = pedido; }
+  public Viaje(Pedido pedido) {
+    boolean spf = pedido.isSPF();
+    boolean baul = pedido.getUsaBaul();
+    Zona zona = pedido.getZona();
+    Integer cantPasajeros = pedido.getCantPasajeros();
+    this.pedido = pedido;
+    costo = valorBase;
+    switch (zona) {
+    case SIN_ASFALTAR:
+      costo += valorBase * 0.2 * cantPasajeros;
+      break;
+    case PELIGROSA:
+    case ESTANDAR:
+      costo += valorBase * 0.1 * cantPasajeros;
+      break;
+    }
+  }
 
   public void setPedido(Pedido pedido) { this.pedido = pedido; }
 
   public Pedido getPedido() { return pedido; }
 
+  /*
+   * El chofer asignado pasa a estar ocupado.
+   */
   public void setChofer(Chofer chofer) {
     this.chofer = chofer;
     this.chofer.setOcupado(true);

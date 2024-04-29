@@ -19,6 +19,7 @@ negocio/ViajeEstandar.class
 excepciones/PedidoInvalidoException.class
 excepciones/SinChoferDisponibleException.class
 negocio/factoryVehiculos.class
+negocio/Viaje$1.class
 negocio/Cliente.class
 negocio/ChoferEmpleado.class
 negocio/ViajeCalleSinAsfaltar.class

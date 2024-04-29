@@ -52,13 +52,13 @@ public class Sistema {
   public void procesarPedido(Pedido pedido)
       throws PedidoInvalidoException, SinVehiculosDisponiblesException,
              SinChoferDisponibleException {
-    if (!pedidoValido(pedido))
-      throw new PedidoInvalidoException();
-    Viaje viaje = new Viaje(pedido);
-    Vehiculo vehiculo = getVehiculoDisponible(pedido);
+    Integer prioridadMoto = Moto.getPrioridad(pedido);
+    Integer prioridadAutomovil = Automovil.getPrioridad(pedido);
+    Integer prioridadCombi = Combi.getPrioridad();
     if (vehiculo == null)
       throw new SinVehiculosDisponiblesException();
     viaje.setVehiculo(vehiculo);
+
     Chofer chofer = getChoferDisponible();
     if (chofer == null)
       throw new SinChoferDisponibleException();
@@ -70,16 +70,6 @@ public class Sistema {
     if (pedido.getCantPasajeros() > 4 && pedido.isSPF())
       return false;
     return true;
-  }
-  private Vehiculo getVehiculoDisponible(Pedido pedido) {
-    if (pedido.getCantPasajeros() > 4) {
-      return getCombiDisponible();
-    }
-    if (pedido.getCantPasajeros() > 1 || pedido.isSPF() ||
-        pedido.getUsaBaul()) {
-      return getAutomovilDisponible();
-    }
-    return getMotoDisponible();
   }
   /*
    * Si encuentra una combi disponible la retorna.

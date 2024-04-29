@@ -1,5 +1,8 @@
 package negocio;
 
+/*
+ * @invariant zona, SPF, usaBaul, fecha, cantPasajeros, cliente.
+ */
 public class Pedido {
   private Zona zona;
   private boolean SPF; // service pet friendly
