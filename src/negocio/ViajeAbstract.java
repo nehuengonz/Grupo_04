@@ -1,7 +1,7 @@
 package negocio;
 
 public abstract class ViajeAbstract implements Iviaje{
-    protected static double costo_base=1000; 
+    protected double costo_base=1000; 
     
 
 
