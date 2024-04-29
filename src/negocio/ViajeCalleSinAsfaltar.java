@@ -10,7 +10,7 @@ public class ViajeCalleSinAsfaltar extends ViajeAbstract{
     @Override
     public double getpasajeros() {
         
-        return this.getpasajeros();
+        return 0.0;
     }
 
     @Override
