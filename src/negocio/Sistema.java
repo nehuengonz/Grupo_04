@@ -56,6 +56,7 @@ public class Sistema {
       throw new SinVehiculosDisponiblesException();
     // TODO: Asignarle vehiculo al viaje (ahora en estado "con vehiculo")
   }
+
   private boolean pedidoValido(Pedido pedido) {
     if (pedido.getCantPasajeros() > 10)
       return false;
@@ -63,6 +64,7 @@ public class Sistema {
       return false;
     return true;
   }
+  
   private Vehiculo getVehiculoDisponible(Pedido pedido) {
     if (pedido.getCantPasajeros() > 4) {
       return getCombiDisponible();

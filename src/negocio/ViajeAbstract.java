@@ -1,6 +1,9 @@
 package negocio;
 
 public abstract class ViajeAbstract implements Iviaje{
+    protected static double costo_base=1000; 
+
+
     protected Pedido pedido;
     protected Chofer chofer;
     protected Vehiculo vehiculo;
@@ -32,4 +35,20 @@ public abstract class ViajeAbstract implements Iviaje{
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
+    public double getValorBase(){
+        return costo_base;
+    }
+    //devuelve el costo aumentado por mascota y/o baul
+    public double getCosto(){
+        double ans=costo_base;
+        if (pedido.getUsaBaul() ==true)
+        {
+            ans*=(1.1 *pedido.getCantPasajeros())+ (1.05* this.getkm());
+        }
+        if (pedido.isSPF() ==true){
+            ans *= (1.1 *pedido.getCantPasajeros())+(1.2 * this.getkm());
+        }
+        return ans + getCostoDecorado();
+    }
+    public abstract double getCostoDecorado();
 }
