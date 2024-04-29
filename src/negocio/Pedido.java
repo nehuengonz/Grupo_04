@@ -32,4 +32,8 @@ public class Pedido {
   public Integer getCantPasajeros() { return cantPasajeros; }
 
   public Cliente getCliente() { return cliente; }
+
+  public double getCosto(){
+    return 0;
+  }
 }

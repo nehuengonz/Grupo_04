@@ -10,8 +10,13 @@ public class Combi extends Vehiculo {
   protected boolean verificarCantPasajeros(Integer cantPasajeros) {
     return cantPasajeros <= 10;
   }
-  protected boolean verificarBaul(boolean usaBaul) { return true; }
-  protected boolean verificarPF(boolean PF) { return !PF; }
+  protected boolean verificarBaul(boolean usaBaul) {
+	 return true; 
+	}
+  protected boolean verificarPF(boolean PF) { 
+	return !PF;
+ }
+ //devuelve 10* cant de pasajeros solicitados +100 si usa baul
   protected Integer calculoPrioridad(Pedido pedido) {
     return 10 * pedido.getCantPasajeros() + (pedido.getUsaBaul() ? 100 : 0);
   }

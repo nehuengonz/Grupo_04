@@ -14,6 +14,7 @@ public class Automovil extends Vehiculo {
   }
   protected boolean verificarBaul(boolean usaBaul) { return true; }
   protected boolean verificarPF(boolean PF) { return true; }
+  
   protected Integer calculoPrioridad(Pedido pedido) {
     if (pedido.getUsaBaul()) {
       return 40 * pedido.getCantPasajeros();

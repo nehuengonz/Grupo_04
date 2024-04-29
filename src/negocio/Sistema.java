@@ -64,12 +64,24 @@ public class Sistema {
       throw new SinChoferDisponibleException();
     viaje.setChofer(chofer);
   }
+
   private boolean pedidoValido(Pedido pedido) {
     if (pedido.getCantPasajeros() > 10)
       return false;
     if (pedido.getCantPasajeros() > 4 && pedido.isSPF())
       return false;
     return true;
+  }
+
+  private Vehiculo getVehiculoDisponible(Pedido pedido) {
+    if (pedido.getCantPasajeros() > 4) {
+      return getCombiDisponible();
+    }
+    if (pedido.getCantPasajeros() > 1 || pedido.isSPF() ||
+        pedido.getUsaBaul()) {
+      return getAutomovilDisponible();
+    }
+    return getMotoDisponible();
   }
   /*
    * Si encuentra una combi disponible la retorna.
@@ -115,6 +127,19 @@ public class Sistema {
 
   // devuelve un vehiculo disponible y lo pone como nodisponible, se usa en el
   // factoryvehiculos.java
+  
+
+  public Vehiculo GetVehiculoDisponible(double cantPasajeros,boolean PF,boolean baul) {
+    if (cantPasajeros == 1 && PF==false  && baul==false) {
+        return vehiculoDisponible("Moto");
+      } else if (cantPasajeros <= 4) {
+        return vehiculoDisponible("Automovil");
+      } else if(PF==false){
+        return vehiculoDisponible("Combi");
+      }else{
+        return null;
+      } 
+    }
   public Vehiculo vehiculoDisponible(String clase) {
     Vehiculo aux = null;
     for (Vehiculo act : vehiculos) {
@@ -125,7 +150,6 @@ public class Sistema {
     }
     return aux;
   }
-
   public String toStringChoferes() {
     return "Sistema [choferes=" + choferes + "]";
   }
