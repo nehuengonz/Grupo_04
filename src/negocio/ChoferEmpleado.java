@@ -3,7 +3,7 @@ package negocio;
 
 public abstract class ChoferEmpleado extends Chofer{
     protected double sueldo_basico;
-    protected double aportes;
+    protected double aportes;//aportes jubilatiorios porcentaje de 1 a 100
 
     
     public ChoferEmpleado(double sueldo_basico, double aportes) {

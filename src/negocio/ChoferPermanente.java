@@ -2,7 +2,7 @@ package negocio;
 
 public class ChoferPermanente extends ChoferEmpleado{
 
-    protected double plus_X_antiguedad;
+    protected double plus_X_antiguedad;// en decimal de 1 a 100
     protected double plus_X_hijos;
     protected String fecha_ingreso;
 
@@ -20,13 +20,17 @@ public class ChoferPermanente extends ChoferEmpleado{
 
     @Override
     public double getSueldoBruto() {
-        // TODO Implement this method
-        return 0.0;
+        //sueldo bruto con hijos y antiguedad
+        double ans=this.sueldo_basico;
+        double ans_antiguedad=ans * (1+ this.plus_X_antiguedad /100);//ejemplo ans= ans* (1+20% /100) -> ans *(1+0.2)
+        double ans_hijos=ans* (1+this.plus_X_hijos /100);
+
+        return ans_antiguedad +ans_hijos;
     }
 
     @Override
     public double getSueldoNeto() {
-        // TODO Implement this method
-        return 0.0;
+        // sueldo bruto - aportes jubilatiorios
+        return this.getSueldoBruto() * (1-this.aportes);
     }
 }
