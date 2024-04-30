@@ -20,19 +20,7 @@ class Viaje {
   public Viaje(Pedido pedido) {
     boolean spf = pedido.isSPF();
     boolean baul = pedido.getUsaBaul();
-    Zona zona = pedido.getZona();
-    Integer cantPasajeros = pedido.getCantPasajeros();
     this.pedido = pedido;
-    costo = valorBase;
-    switch (zona) {
-    case SIN_ASFALTAR:
-      costo += valorBase * 0.2 * cantPasajeros;
-      break;
-    case PELIGROSA:
-    case ESTANDAR:
-      costo += valorBase * 0.1 * cantPasajeros;
-      break;
-    }
   }
 
   public void setPedido(Pedido pedido) { this.pedido = pedido; }

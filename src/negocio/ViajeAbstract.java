@@ -1,14 +1,12 @@
 package negocio;
 
 public abstract class ViajeAbstract implements Iviaje{
-    protected double costo_base=1000; 
-    
-
+    protected double costo_base = 1000; 
 
     protected Pedido pedido;
     protected Chofer chofer;
     protected Vehiculo vehiculo;
-    //crear clases viaje a zona peligrosa/viaje calle sin asfaltar/viaje estandar
+
     public ViajeAbstract() {
         super();
     }

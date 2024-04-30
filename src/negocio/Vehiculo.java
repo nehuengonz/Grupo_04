@@ -9,7 +9,6 @@ public abstract class Vehiculo {
 
   public Vehiculo(String nropatente, double cant_max_pasajeros, boolean PF,
                   boolean baul) {
-    super();
     this.nropatente = nropatente;
     this.cant_max_pasajeros = cant_max_pasajeros;
     this.PF = PF;
@@ -19,7 +18,7 @@ public abstract class Vehiculo {
    * Devuelve un Integer indicando el valor de prioridad para el pedido en
    * cuestión. Si el vehículo no es apto para el pedido retorna null.
    */
-  static public Integer getPrioridad(Pedido pedido) {
+  public Integer getPrioridad(Pedido pedido) {
     if (!verificarCantPasajeros(pedido.getCantPasajeros()) ||
         !verificarBaul(pedido.getUsaBaul()) || !verificarPF(pedido.isSPF()))
       return null;
@@ -29,7 +28,6 @@ public abstract class Vehiculo {
   abstract protected boolean verificarBaul(boolean usaBaul);
   abstract protected boolean verificarPF(boolean PF);
   abstract protected Integer calculoPrioridad(Pedido pedido);
-  public Vehiculo() { super(); }
 
   public void setNropatente(String nropatente) { this.nropatente = nropatente; }
 

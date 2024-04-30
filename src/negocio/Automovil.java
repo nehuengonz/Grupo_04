@@ -7,8 +7,6 @@ public class Automovil extends Vehiculo {
     super(nropatente, cant_max_pasajeros, true, true);
   }
 
-  public Automovil() { super(); }
-
   protected boolean verificarCantPasajeros(Integer cantPasajeros) {
     return cantPasajeros <= 4;
   }

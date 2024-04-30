@@ -52,17 +52,7 @@ public class Sistema {
   public void procesarPedido(Pedido pedido)
       throws PedidoInvalidoException, SinVehiculosDisponiblesException,
              SinChoferDisponibleException {
-    Integer prioridadMoto = Moto.getPrioridad(pedido);
-    Integer prioridadAutomovil = Automovil.getPrioridad(pedido);
-    Integer prioridadCombi = Combi.getPrioridad();
-    if (vehiculo == null)
-      throw new SinVehiculosDisponiblesException();
-    viaje.setVehiculo(vehiculo);
-
-    Chofer chofer = getChoferDisponible();
-    if (chofer == null)
-      throw new SinChoferDisponibleException();
-    viaje.setChofer(chofer);
+    // TODO: Implement method
   }
 
   private boolean pedidoValido(Pedido pedido) {
