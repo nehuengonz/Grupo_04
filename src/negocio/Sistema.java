@@ -52,6 +52,10 @@ public class Sistema {
       throw new PedidoInvalidoException();
     // TODO: crear viaje en estado "solicitado"
     Vehiculo vehiculo = getVehiculoDisponible(pedido);
+    Chofer chofer=getChoferDisponible();
+
+    if (chofer ==null)
+    throw new sinchoferesdisponiblesException();
     if (vehiculo == null)
       throw new SinVehiculosDisponiblesException();
     // TODO: Asignarle vehiculo al viaje (ahora en estado "con vehiculo")
@@ -64,7 +68,7 @@ public class Sistema {
       return false;
     return true;
   }
-  
+
   private Vehiculo getVehiculoDisponible(Pedido pedido) {
     if (pedido.getCantPasajeros() > 4) {
       return getCombiDisponible();
@@ -135,6 +139,16 @@ public class Sistema {
     }
     return aux;
   }
+  //devuelve el primer chofer disponible
+  public Chofer getChoferDisponible(){
+    Chofer aux=null;
+    for (Chofer act:choferes){
+      if(act.isDisponible()== true)
+        aux=act;
+    }
+    return aux;
+  }
+
   public String toStringChoferes() {
     return "Sistema [choferes=" + choferes + "]";
   }
@@ -142,4 +156,6 @@ public class Sistema {
   public String toStringVehiculos() {
     return "Sistema [vehiculos=" + vehiculos + "]";
   }
+
+
 }

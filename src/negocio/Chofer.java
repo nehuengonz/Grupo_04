@@ -3,6 +3,7 @@ package negocio;
 public abstract class Chofer {
     protected String  dni;
     protected String nombre;
+    protected boolean disponible=true;
 
 
     public Chofer(String dni, String nombre) {
@@ -38,6 +39,14 @@ public abstract class Chofer {
 	public String toString() {
 		return "Chofer [dni=" + dni + ", nombre=" + nombre + "]";
 	}
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
     
 }
 
