@@ -52,7 +52,26 @@ public class Sistema {
   public void procesarPedido(Pedido pedido)
       throws PedidoInvalidoException, SinVehiculosDisponiblesException,
              SinChoferDisponibleException {
-    // TODO: Implement method
+    ViajeAbstract viaje;
+    Zona zona = pedido.getZona();
+    switch(zona) {
+      case ESTANDAR:
+        viaje = new ViajeEstandar();
+        break;
+      case PELIGROSA:
+        viaje = new ViajeZonaPeligrosa(null);
+        break;
+      case SIN_ASFALTAR:
+        viaje = new ViajeCalleSinAsfaltar(null);
+        break;
+      default: throw new PedidoInvalidoException();
+    }
+   if(pedido.getUsaBaul()) {
+     viaje = new ViajeConBaul(viaje);
+   }
+   if(pedido.isSPF()) {
+     viaje = new ViajeConMascota(viaje);
+   }
   }
 
   private boolean pedidoValido(Pedido pedido) {
