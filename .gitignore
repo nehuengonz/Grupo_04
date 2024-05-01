@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-target/
 classes/
 bin/
-=======
-classes/
 target/
 .idea/
->>>>>>> main

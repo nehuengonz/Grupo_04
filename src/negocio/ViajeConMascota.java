@@ -7,37 +7,17 @@ public class ViajeConMascota extends ViajeDecorator {
     }
 
     @Override
-    public double getCostoDecorado() {
+    public double getCantPasajeros() {
         return 0;
     }
 
     @Override
-    public double getpasajeros() {
+    public double getDistanciaRecorridaEnKm() {
         return 0;
-    }
-
-    @Override
-    public double getkm() {
-        return 0;
-    }
-
-    @Override
-    public void getViaje() {
-
     }
 
     @Override
     public double getCosto() {
-        return 0;
-    }
-
-    @Override
-    public void getCalificacionDelChofer() {
-
-    }
-
-    @Override
-    public double getDistanciaRecorrida() {
-        return 0;
+        return viajeWrapee.getCosto() + costoBase * (0.1 * getCantPasajeros() + 0.2 * getDistanciaRecorridaEnKm());
     }
 }

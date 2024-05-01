@@ -1,17 +1,15 @@
 package negocio;
 
-public abstract class ViajeAbstract implements Iviaje{
-    protected double costo_base = 1000;
+public abstract class ViajeAbstract implements Iviaje {
+    protected double costoBase = 1000;
 
     protected Pedido pedido;
     protected Chofer chofer;
-    protected Vehiculo vehiculo;
 
-    public ViajeAbstract() {
-        super();
-    }
-
-    public void setPedido(Pedido pedido) {
+    /*
+     * El pedido se inicializa en el constructor y después no se vuelve a modificar.
+     */
+    public ViajeAbstract(Pedido pedido) {
         this.pedido = pedido;
     }
 
@@ -21,44 +19,10 @@ public abstract class ViajeAbstract implements Iviaje{
 
     public void setChofer(Chofer chofer) {
         this.chofer = chofer;
+        chofer.setOcupado(true);
     }
 
     public Chofer getChofer() {
         return chofer;
     }
-
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
-    }
-
-    public Vehiculo getVehiculo() {
-        return vehiculo;
-    }
-    public double getValorBase(){
-        return costo_base;
-    }
-    //devuelve el costo aumentado por mascota y/o baul
-    public double getCosto(){
-        return getCostoBaul()+getCostoMascota() + getCostoDecorado();
-    }
-    public double getCostoBaul(){
-        double res=costo_base;
-        double aumento_km=1.05;
-        double aumento_pasajero=1.1;
-        if (pedido.getUsaBaul() ==true)
-        {
-            res*=(aumento_pasajero *pedido.getCantPasajeros())+(aumento_km * this.getkm());
-        }
-        return res; 
-    }
-    public double getCostoMascota(){
-        double res=costo_base;
-        double aumento_km=1.2;
-        double aumento_pasajero=1.1;
-        if (pedido.isSPF() ==true){
-            res *= (aumento_pasajero *pedido.getCantPasajeros())+(aumento_km * this.getkm());
-        }
-        return res;
-    }
-    public abstract double getCostoDecorado();
 }

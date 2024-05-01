@@ -7,32 +7,17 @@ public class ViajeConBaul extends ViajeDecorator {
     }
 
     @Override
-    public double getCostoDecorado() {
-        return 0;
+    public double getCantPasajeros() {
+        return viajeWrapee.getCantPasajeros();
     }
 
     @Override
-    public double getpasajeros() {
-        return 0;
+    public double getDistanciaRecorridaEnKm() {
+        return viajeWrapee.getDistanciaRecorridaEnKm();
     }
 
     @Override
-    public double getkm() {
-        return 0;
-    }
-
-    @Override
-    public void getViaje() {
-
-    }
-
-    @Override
-    public void getCalificacionDelChofer() {
-
-    }
-
-    @Override
-    public double getDistanciaRecorrida() {
-        return 0;
+    public double getCosto() {
+        return viajeWrapee.getCosto() + costoBase * (0.1 * getCantPasajeros() + 0.05 * getDistanciaRecorridaEnKm());
     }
 }

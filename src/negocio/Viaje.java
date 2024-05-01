@@ -18,6 +18,7 @@ class Viaje {
    * distanciaRecorrida y costo son null inicialmente.
    */
   public Viaje(Pedido pedido) {
+    assert pedido != null;
     boolean spf = pedido.isSPF();
     boolean baul = pedido.getUsaBaul();
     this.pedido = pedido;
