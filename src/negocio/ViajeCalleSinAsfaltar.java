@@ -1,10 +1,10 @@
 package negocio;
 
-public class ViajeCalleSinAsfaltar extends ViajeDecorator {
+public class ViajeCalleSinAsfaltar extends ViajeAbstract{
     private static final double aumento_por_pasajero=0.2;
     private static final double aumento_por_km=0.15;
-    public ViajeCalleSinAsfaltar(ViajeAbstract viaje) {
-        super(viaje);
+    public ViajeCalleSinAsfaltar(Iviaje viaje) {
+        super.setViaje(viaje);
     }
 
     @Override
@@ -19,11 +19,14 @@ public class ViajeCalleSinAsfaltar extends ViajeDecorator {
         return 0.0;
     }
 
-    @Override
-    public void getViaje() {
-       
-    }
 
+    //obtiene el costo del decorado anterior-> viaje abstracto y lo multiplica por el aumento de la calle sin asfaltar
+    public double getCosto(){
+        return  (this.getviaje().getCosto())*
+        (this.pedido.getCantPasajeros()*aumento_por_pasajero)*
+        (this.viaje.getkm()*aumento_por_km);
+
+    }
     @Override
     public double getCostoDecorado() {
         
@@ -40,4 +43,5 @@ public class ViajeCalleSinAsfaltar extends ViajeDecorator {
         // TODO Implement this method
         return 0.0;
     }
+
 }

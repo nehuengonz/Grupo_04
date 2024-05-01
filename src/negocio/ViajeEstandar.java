@@ -19,15 +19,12 @@ public class ViajeEstandar extends ViajeAbstract {
         return 0.0;
     }
 
-    @Override
-    public void getViaje() {
-        // TODO Implement this method
-    }
 
     @Override
-    public double getCosto() {
-        // TODO Implement this method
-        return 0.0;
+    public double getCosto(){
+        return  (this.getviaje().getCosto())*
+        (this.pedido.getCantPasajeros()*aumento_por_pasajero)*
+        (this.viaje.getkm()*aumento_por_km);
     }
 
     @Override
