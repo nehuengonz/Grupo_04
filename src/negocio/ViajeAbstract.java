@@ -9,11 +9,14 @@ public abstract class ViajeAbstract implements Iviaje {
     protected Pedido pedido;
     protected Chofer chofer;
     protected Vehiculo vehiculo;
-    //crear clases viaje a zona peligrosa/viaje calle sin asfaltar/viaje estandar
-    public ViajeAbstract() {
-        super();
-    }
     
+    public ViajeAbstract(Pedido pedido, Chofer chofer, Vehiculo vehiculo) {
+        this.pedido = pedido;
+        this.chofer = chofer;
+        this.vehiculo = vehiculo;
+    }
+
+    //crear clases viaje a zona peligrosa/viaje calle sin asfaltar/viaje estandar
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
@@ -40,7 +43,7 @@ public abstract class ViajeAbstract implements Iviaje {
     public double getValorBase(){
         return costo_base;
     }
-    //devuelve el costo aumentado por mascota y/o baul
+    //aca el costo 
     public double getCosto(){
         return costo_base;
     }
@@ -73,8 +76,24 @@ public abstract class ViajeAbstract implements Iviaje {
         this.costo_base = costo_base;
     }
 
-    public Iviaje getviaje(){
-        return viaje;
+//agregar throw tipo de zona desconocida
+    public Iviaje getviaje(Pedido pedido,Chofer chofer,Vehiculo vehiculo){
+        Iviaje respuesta=null;
+        Iviaje encapsulado=null;
+        if(pedido.getZona().equalsIgnoreCase("Zona Peligrosa"))
+            encapsulado=new ViajeZonaPeligrosa(pedido,chofer,vehiculo);
+        else if (pedido.getZona().equalsIgnoreCase("Estandar"))
+            encapsulado=new ViajeEstandar(pedido, chofer, vehiculo);
+        else if (pedido.getZona().equalsIgnoreCase("Calle sin Asfaltar"))
+            encapsulado=new ViajeCalleSinAsfaltar(pedido, chofer, vehiculo);
+        //si la zona esta contemplada
+        //aca agregar el decorator de baul y el decorator de mascota
+        if (encapsulado !=null)
+        {
+            respuesta=new ViajeConBaul(encapsulado);
+            respuesta=new ViajeConMascota(encapsulado);
+        }
+        return respuesta;
     }
 
     public void setViaje(Iviaje viaje) {

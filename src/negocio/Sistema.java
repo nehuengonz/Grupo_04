@@ -2,6 +2,8 @@ package negocio;
 
 import excepciones.PedidoInvalidoException;
 import excepciones.SinVehiculosDisponiblesException;
+import excepciones.sinchoferesdisponiblesException;
+
 import java.util.ArrayList;
 
 /*
@@ -13,7 +15,7 @@ public class Sistema {
   private ArrayList<Chofer> choferes = new ArrayList<>();
   private ArrayList<Vehiculo> vehiculos = new ArrayList<>();
   private ArrayList<Cliente> clientes = new ArrayList<>();
-  private ArrayList<ViajeAbstract> viajes = new ArrayList<>();
+  private ArrayList<Iviaje> viajes = new ArrayList<>();
 
   private Sistema() {
     // privado por el patron Singleton
@@ -36,7 +38,7 @@ public class Sistema {
 
   public ArrayList<Cliente> getClientes() { return clientes; }
 
-  public ArrayList<ViajeAbstract> getViajes() { return viajes; }
+  public ArrayList<Iviaje> getViajes() { return viajes; }
 
   // metodos del sistema
   /*
@@ -47,20 +49,30 @@ public class Sistema {
    * no hay vehículos del tipo necesario para satisfacer el pedido.
    */
   public void procesarPedido(Pedido pedido)
-      throws PedidoInvalidoException, SinVehiculosDisponiblesException {
+      throws PedidoInvalidoException, SinVehiculosDisponiblesException, sinchoferesdisponiblesException {
     if (!pedidoValido(pedido))
       throw new PedidoInvalidoException();
     // TODO: crear viaje en estado "solicitado"
     Vehiculo vehiculo = getVehiculoDisponible(pedido);
     Chofer chofer=getChoferDisponible();
+  
+    ViajeAbstract viaje=null;
+    Iviaje viajeconcreto=viaje.getviaje(pedido, chofer, vehiculo);
+
+    viajes.add(viajeconcreto);
+
+    
+      
+   
 
     if (chofer ==null)
-    throw new sinchoferesdisponiblesException();
+      throw new sinchoferesdisponiblesException();
     if (vehiculo == null)
       throw new SinVehiculosDisponiblesException();
     // TODO: Asignarle vehiculo al viaje (ahora en estado "con vehiculo")
   }
 
+  //contemplar tambien si la zona del pedido es valida
   private boolean pedidoValido(Pedido pedido) {
     if (pedido.getCantPasajeros() > 10)
       return false;
@@ -99,7 +111,7 @@ public class Sistema {
   }
   private Moto getMotoDisponible() {
     for (Vehiculo v : vehiculos) {
-      if (v.isDisponible() && v instanceof Moto)
+      if (v.isDisponible() && v instanceof Moto) 
         return (Moto)v;
     }
     return null;
@@ -111,8 +123,8 @@ public class Sistema {
   public void agregaCliente(Cliente cliente) { clientes.add(cliente); }
   public void sacaCliente(Cliente cliente) { clientes.remove(cliente); }
 
-  public void agregaViaje(ViajeAbstract viaje) { viajes.add(viaje); }
-  public void sacaViaje(ViajeAbstract viaje) { viajes.remove(viaje); }
+  public void agregaViaje(Iviaje viaje) { viajes.add(viaje); }
+  public void sacaViaje(Iviaje viaje) { viajes.remove(viaje); }
 
   // devuelve un vehiculo disponible y lo pone como nodisponible, se usa en el
   // factoryvehiculos.java

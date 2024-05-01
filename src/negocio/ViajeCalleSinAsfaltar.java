@@ -1,10 +1,13 @@
 package negocio;
 
 public class ViajeCalleSinAsfaltar extends ViajeAbstract{
+    
     private static final double aumento_por_pasajero=0.2;
     private static final double aumento_por_km=0.15;
-    public ViajeCalleSinAsfaltar(Iviaje viaje) {
-        super.setViaje(viaje);
+    
+    public ViajeCalleSinAsfaltar(Pedido pedido, Chofer chofer, Vehiculo vehiculo) {
+        super(pedido, chofer, vehiculo);
+        //TODO Auto-generated constructor stub
     }
 
     @Override
@@ -25,7 +28,6 @@ public class ViajeCalleSinAsfaltar extends ViajeAbstract{
         return  (this.getviaje().getCosto())*
         (this.pedido.getCantPasajeros()*aumento_por_pasajero)*
         (this.viaje.getkm()*aumento_por_km);
-
     }
     @Override
     public double getCostoDecorado() {
