@@ -1,6 +1,6 @@
 package negocio;
 
-public class ViajeEstandar extends ViajeAbstract{
+public class ViajeEstandar extends ViajeAbstract {
     private static final double aumento_por_pasajero=0.1;
     private static final double aumento_por_km=0.1;
     public ViajeEstandar() {

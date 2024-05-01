@@ -1,10 +1,10 @@
 package negocio;
 
-public class ViajeCalleSinAsfaltar extends ViajeAbstract{
+public class ViajeCalleSinAsfaltar extends ViajeDecorator {
     private static final double aumento_por_pasajero=0.2;
     private static final double aumento_por_km=0.15;
-    public ViajeCalleSinAsfaltar() {
-        super();
+    public ViajeCalleSinAsfaltar(ViajeAbstract viaje) {
+        super(viaje);
     }
 
     @Override
