@@ -2,6 +2,7 @@ package negocio;
 
 import excepciones.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /*
  * @invariant choferes, vehiculos, clientes y viajes siempre distintos de null.
@@ -51,27 +52,30 @@ public class Sistema {
    */
   public void procesarPedido(Pedido pedido)
       throws PedidoInvalidoException, SinVehiculosDisponiblesException,
-             SinChoferDisponibleException {
+             SinChoferDisponibleException, Exception {
+    Combi combi = getCombiDisponible();
+    Automovil automovil = getAutomovilDisponible();
+    Moto moto = getMotoDisponible();
+    Vehiculo vehiculo = vehiculoConMayorPrioridad(pedido, moto, automovil, combi);
+    if(vehiculo == null) {
+      throw new PedidoInvalidoException();
+    }
+    vehiculo.setDisponible(false);
+
     ViajeAbstract viaje;
     Zona zona = pedido.getZona();
-    switch(zona) {
-      case ESTANDAR:
-        viaje = new ViajeEstandar();
-        break;
-      case PELIGROSA:
-        viaje = new ViajeZonaPeligrosa(null);
-        break;
-      case SIN_ASFALTAR:
-        viaje = new ViajeCalleSinAsfaltar(null);
-        break;
-      default: throw new PedidoInvalidoException();
-    }
+    viaje = ViajeAbstract.fromZona(zona, pedido);
    if(pedido.getUsaBaul()) {
      viaje = new ViajeConBaul(viaje);
    }
    if(pedido.isSPF()) {
      viaje = new ViajeConMascota(viaje);
    }
+   Chofer chofer = getChoferDisponible();
+   if(chofer == null) {
+     throw new SinChoferDisponibleException();
+   }
+   viaje.setChofer(chofer);
   }
 
   private boolean pedidoValido(Pedido pedido) {
@@ -82,16 +86,26 @@ public class Sistema {
     return true;
   }
 
-  private Vehiculo getVehiculoDisponible(Pedido pedido) {
-    if (pedido.getCantPasajeros() > 4) {
-      return getCombiDisponible();
+  private Vehiculo vehiculoConMayorPrioridad(Pedido pedido, Moto moto, Automovil automovil, Combi combi) throws SinVehiculosDisponiblesException {
+    List<Vehiculo> vehiculos = new ArrayList<>();
+    if(moto != null) vehiculos.add(moto);
+    if(automovil != null) vehiculos.add(automovil);
+    if(combi != null) vehiculos.add(combi);
+    if(vehiculos.isEmpty()) {
+      throw new SinVehiculosDisponiblesException();
     }
-    if (pedido.getCantPasajeros() > 1 || pedido.isSPF() ||
-        pedido.getUsaBaul()) {
-      return getAutomovilDisponible();
+    Integer mayorPrioridad = -1;
+    Vehiculo vehiculoMayorPrioridad = null;
+    for(Vehiculo v : vehiculos) {
+      Integer prioridad = v.getPrioridad(pedido);
+      if(prioridad != null && mayorPrioridad < prioridad) {
+        mayorPrioridad = prioridad;
+        vehiculoMayorPrioridad = v;
+      }
     }
-    return getMotoDisponible();
+    return vehiculoMayorPrioridad;
   }
+
   /*
    * Si encuentra una combi disponible la retorna.
    * Si no devuelve null.

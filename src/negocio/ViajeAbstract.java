@@ -25,4 +25,16 @@ public abstract class ViajeAbstract implements Iviaje {
     public Chofer getChofer() {
         return chofer;
     }
+
+    public static ViajeAbstract fromZona(Zona zona, Pedido pedido) throws Exception {
+        switch(zona) {
+            case ESTANDAR:
+                return new ViajeEstandar(pedido);
+            case SIN_ASFALTAR:
+                return new ViajeCalleSinAsfaltar(pedido);
+            case PELIGROSA:
+                return new ViajeZonaPeligrosa(pedido);
+            default: throw new Exception("Error: zona inesperada.");
+        }
+    }
 }
