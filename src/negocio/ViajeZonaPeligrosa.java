@@ -12,13 +12,13 @@ public class ViajeZonaPeligrosa extends ViajeAbstract {
     @Override
     public double getpasajeros() {
         // TODO Implement this method
-        return 0.0;
+        return this.pedido.getCantPasajeros();
     }
 
     @Override
     public double getkm() {
         // TODO Implement this method
-        return 0.0;
+        return	super.getkm();
     }
 
 

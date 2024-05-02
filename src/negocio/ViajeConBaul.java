@@ -12,14 +12,10 @@ public class ViajeConBaul implements Iviaje {
     public ViajeConBaul(Iviaje viaje){
         this.viaje=viaje;
     }
-    @Override
-    public double getpasajeros() {
-        return 0;
-    }
 
     @Override
     public double getkm() {
-        return 0;
+        return viaje.getkm();
     }
 
 
@@ -36,4 +32,10 @@ public class ViajeConBaul implements Iviaje {
        (aumento_por_pasajero*viaje.getpasajeros())*
        (aumento_por_km)*viaje.getkm();
     }
+
+	@Override
+	public double getpasajeros() {
+		// TODO Auto-generated method stub
+		return viaje.getpasajeros();
+	}
 }

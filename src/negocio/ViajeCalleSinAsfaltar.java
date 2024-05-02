@@ -18,7 +18,7 @@ public class ViajeCalleSinAsfaltar extends ViajeAbstract{
     @Override
     public double getkm() {
         // TODO Implement this method
-        return 0.0;
+        return super.getkm();
     }
 
 

@@ -26,7 +26,7 @@ public class ViajeConMascota implements Iviaje{
 
     @Override
     public double getkm() {
-        return 0;
+        return viaje.getkm();
     }
 
 
