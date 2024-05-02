@@ -53,7 +53,9 @@ public class Sistema {
     if (!pedidoValido(pedido))
       throw new PedidoInvalidoException();
     // TODO: crear viaje en estado "solicitado"
+   
     Vehiculo vehiculo = getVehiculoDisponible(pedido);
+   // System.out.println(vehiculo.toString());
     Chofer chofer=getChoferDisponible();
   
       //ya se contempla que el vehiculo y el chofer existe
@@ -61,15 +63,17 @@ public class Sistema {
 
     viajes.add(viaje);
 
+    System.out.println(viaje.toString());
     
-      
    
 
     if (chofer ==null)
       throw new sinchoferesdisponiblesException();
     if (vehiculo == null)
       throw new SinVehiculosDisponiblesException();
-    // TODO: Asignarle vehiculo al viaje (ahora en estado "con vehiculo")
+      
+   System.out.println("pedido procesado existozamente!");
+
   }
 
   //contemplar tambien si la zona del pedido es valida
@@ -130,21 +134,23 @@ public class Sistema {
   // factoryvehiculos.java
   
 
-  public Vehiculo GetVehiculoDisponible(double cantPasajeros,boolean PF,boolean baul) {
-    if (cantPasajeros == 1 && PF==false  && baul==false) {
+  public Vehiculo GetVehiculoDisponible(Pedido pedido) {
+    if (pedido.getCantPasajeros() == 1 && pedido.isSPF()==false  && pedido.getUsaBaul()==false) {
         return vehiculoDisponible("Moto");
-      } else if (cantPasajeros <= 4) {
+      } else if (pedido.getCantPasajeros() <= 4) {
         return vehiculoDisponible("Automovil");
-      } else if(PF==false){
+      } else if(pedido.isSPF()==false){
         return vehiculoDisponible("Combi");
       }else{
         return null;
       } 
     }
+  
+  //correccion no usar == para comparar string si no son el mismo objeto
   public Vehiculo vehiculoDisponible(String clase) {
     Vehiculo aux = null;
     for (Vehiculo act : vehiculos) {
-      if (act.getClass().getName() == clase && act.disponible == true) {
+      if (act.getClass().getName().contains(clase) && act.disponible == true) {
         aux = act;
         aux.disponible = false;
       }
@@ -188,6 +194,12 @@ public class Sistema {
   public String toStringVehiculos() {
     return "Sistema [vehiculos=" + vehiculos + "]";
   }
+
+	@Override
+	public String toString() {
+		return "Sistema [viajes=" + viajes + "]";
+	}
+  
 
 
 }

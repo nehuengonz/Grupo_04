@@ -66,7 +66,6 @@ public abstract class ViajeAbstract implements Iviaje {
         }
         return res;
     }
-    public abstract double getCostoDecorado();
 
     public double getCosto_base() {
         return costo_base;
@@ -76,7 +75,7 @@ public abstract class ViajeAbstract implements Iviaje {
         this.costo_base = costo_base;
     }
 
-//agregar throw tipo de zona desconocida
+
   
     public Iviaje getViaje(){
         return this.viaje;
@@ -90,5 +89,18 @@ public abstract class ViajeAbstract implements Iviaje {
         Random random = new Random();
         return random.nextInt(40);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Viaje [");
+        sb.append("pedido=" + pedido);
+        sb.append(", chofer=" + chofer);
+        sb.append(", vehiculo=" + vehiculo);
+        // You can add details from overridden methods in subclasses here
+        sb.append("]");
+        return sb.toString();
+    }
+    
 
 }

@@ -28,10 +28,7 @@ public class ViajeConBaul implements Iviaje {
 
     }
 
-    @Override
-    public double getDistanciaRecorrida() {
-        return 0;
-    }
+
 
     @Override
     public double getCosto() {

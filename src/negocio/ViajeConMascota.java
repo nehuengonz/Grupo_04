@@ -35,8 +35,4 @@ public class ViajeConMascota implements Iviaje{
 
     }
 
-    @Override
-    public double getDistanciaRecorrida() {
-        return 0;
-    }
 }

@@ -34,14 +34,11 @@ public class ViajeZonaPeligrosa extends ViajeAbstract {
         // TODO Implement this method
     }
 
-    @Override
-    public double getDistanciaRecorrida() {
-        // TODO Implement this method
-        return 0.0;
-    }
+    /* 
     @Override
     public double getCostoDecorado() {
         
         return (this.costo_base * aumento_por_pasajero)*pedido.getCantPasajeros() + ((this.costo_base *aumento_por_km) * this.getkm());
     }
+    */
 }

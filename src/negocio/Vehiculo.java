@@ -14,6 +14,7 @@ public abstract class Vehiculo {
     this.cant_max_pasajeros = cant_max_pasajeros;
     this.PF = PF;
     this.baul = baul;
+    this.disponible=true;
   }
   public Integer getPrioridad(Pedido pedido) {
     if (!verificarCantPasajeros(pedido.getCantPasajeros()) ||

@@ -24,25 +24,21 @@ public class ViajeCalleSinAsfaltar extends ViajeAbstract{
 
     //obtiene el costo del decorado anterior-> viaje abstracto y lo multiplica por el aumento de la calle sin asfaltar
     public double getCosto(){
-        return  (this.getviaje.getCosto())*
+        return  (this.getViaje().getCosto())*
         (this.pedido.getCantPasajeros()*aumento_por_pasajero)*
         (this.viaje.getkm()*aumento_por_km);
-    }
+    }/* 
     @Override
     public double getCostoDecorado() {
         
         return (this.costo_base * aumento_por_pasajero)*pedido.getCantPasajeros() + ((this.costo_base *aumento_por_km) * this.getkm());
     }
-
+    */
     @Override
     public void getCalificacionDelChofer() {
         // TODO Implement this method
     }
 
-    @Override
-    public double getDistanciaRecorrida() {
-        // TODO Implement this method
-        return 0.0;
-    }
+ 
 
 }
