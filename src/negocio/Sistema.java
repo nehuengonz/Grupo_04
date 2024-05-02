@@ -78,14 +78,6 @@ public class Sistema {
    viaje.setChofer(chofer);
   }
 
-  private boolean pedidoValido(Pedido pedido) {
-    if (pedido.getCantPasajeros() > 10)
-      return false;
-    if (pedido.getCantPasajeros() > 4 && pedido.isSPF())
-      return false;
-    return true;
-  }
-
   private Vehiculo vehiculoConMayorPrioridad(Pedido pedido, Moto moto, Automovil automovil, Combi combi) throws SinVehiculosDisponiblesException {
     List<Vehiculo> vehiculos = new ArrayList<>();
     if(moto != null) vehiculos.add(moto);
