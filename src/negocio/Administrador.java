@@ -32,8 +32,21 @@ public class Administrador extends Usuario {
   public void altasVehiculo(String tipo, String patente) {
     sistema.agregarVehiculo(factoryVehiculos.createVehiculo(tipo, patente));
   }
-  public void modificacionesCliente() {}
-  public void modificacionesChofer() {}
+  //uso contains en modifica cliente
+  public void modificacionesCliente(String Nombreus,String newNombreus,String newpass,String newName) {
+	  
+	  for(Cliente act:sistema.getClientes()) {
+		  if(act.nombreUs.contains(Nombreus)) {
+			  act.setNombreUs(newNombreus);
+			  act.setContrasenia(newpass);
+			  act.setNombreReal(newName);
+			  System.out.println("datos de cliente cambiados con exito!!!");
+		  }
+	  }
+  }
+  public void modificacionesChofer(String dni, String newdni,String nombre) {
+	  
+  } 
   public void modificacionesVehiculo() {}
   public void consultasCliente() {}
   public void consultasChofer() {}

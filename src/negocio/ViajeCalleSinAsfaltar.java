@@ -12,7 +12,7 @@ public class ViajeCalleSinAsfaltar extends ViajeAbstract{
     @Override
     public double getpasajeros() {
         
-        return 0.0;
+        return this.pedido.getCantPasajeros();
     }
 
     @Override

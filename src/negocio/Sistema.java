@@ -77,6 +77,7 @@ public class Sistema {
 
   }
 
+  
   //contemplar tambien si la zona del pedido es valida
   private boolean pedidoValido(Pedido pedido) {
     if (pedido.getCantPasajeros() > 10)
