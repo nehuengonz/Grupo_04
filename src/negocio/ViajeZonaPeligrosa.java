@@ -24,7 +24,7 @@ public class ViajeZonaPeligrosa extends ViajeAbstract {
 
     @Override
     public double getCosto(){
-        return  (this.getviaje(pedido, chofer, vehiculo).getCosto())*
+        return  (this.getViaje().getCosto())*
         (this.pedido.getCantPasajeros()*aumento_por_pasajero)*
         (this.viaje.getkm()*aumento_por_km);
     }

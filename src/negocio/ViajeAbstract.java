@@ -77,23 +77,9 @@ public abstract class ViajeAbstract implements Iviaje {
     }
 
 //agregar throw tipo de zona desconocida
-    public Iviaje getviaje(Pedido pedido,Chofer chofer,Vehiculo vehiculo){
-        Iviaje respuesta=null;
-        Iviaje encapsulado=null;
-        if(pedido.getZona().equalsIgnoreCase("Zona Peligrosa"))
-            encapsulado=new ViajeZonaPeligrosa(pedido,chofer,vehiculo);
-        else if (pedido.getZona().equalsIgnoreCase("Estandar"))
-            encapsulado=new ViajeEstandar(pedido, chofer, vehiculo);
-        else if (pedido.getZona().equalsIgnoreCase("Calle sin Asfaltar"))
-            encapsulado=new ViajeCalleSinAsfaltar(pedido, chofer, vehiculo);
-        //si la zona esta contemplada
-        //aca agregar el decorator de baul y el decorator de mascota
-        if (encapsulado !=null)
-        {
-            respuesta=new ViajeConBaul(encapsulado);
-            respuesta=new ViajeConMascota(encapsulado);
-        }
-        return respuesta;
+  
+    public Iviaje getViaje(){
+        return this.viaje;
     }
 
     public void setViaje(Iviaje viaje) {

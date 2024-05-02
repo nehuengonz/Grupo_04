@@ -56,10 +56,10 @@ public class Sistema {
     Vehiculo vehiculo = getVehiculoDisponible(pedido);
     Chofer chofer=getChoferDisponible();
   
-    ViajeAbstract viaje=null;
-    Iviaje viajeconcreto=viaje.getviaje(pedido, chofer, vehiculo);
+      //ya se contempla que el vehiculo y el chofer existe
+    Iviaje viaje=getviaje(pedido, chofer, vehiculo);
 
-    viajes.add(viajeconcreto);
+    viajes.add(viaje);
 
     
       
@@ -160,6 +160,26 @@ public class Sistema {
     }
     return aux;
   }
+  //agregar throw tipo de zona desconocida
+  public Iviaje getviaje(Pedido pedido,Chofer chofer,Vehiculo vehiculo){
+    Iviaje respuesta=null;
+    Iviaje encapsulado=null;
+    if(pedido.getZona().equalsIgnoreCase("Zona Peligrosa"))
+        encapsulado=new ViajeZonaPeligrosa(pedido,chofer,vehiculo);
+    else if (pedido.getZona().equalsIgnoreCase("Estandar"))
+        encapsulado=new ViajeEstandar(pedido, chofer, vehiculo);
+    else if (pedido.getZona().equalsIgnoreCase("Calle sin Asfaltar"))
+        encapsulado=new ViajeCalleSinAsfaltar(pedido, chofer, vehiculo);
+    //si la zona esta contemplada
+    //aca agregar el decorator de baul y el decorator de mascota
+    if (encapsulado !=null)
+    {
+        //se decora el viaje con el baul y la mascota
+        respuesta=new ViajeConBaul(encapsulado);
+        respuesta=new ViajeConMascota(encapsulado);
+    }
+    return respuesta;
+}
 
   public String toStringChoferes() {
     return "Sistema [choferes=" + choferes + "]";
