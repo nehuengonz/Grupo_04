@@ -35,4 +35,10 @@ public class ViajeConMascota implements Iviaje{
 
     }
 
+	@Override
+	public String toString() {
+		return this.viaje.toString();
+	}
+
+    
 }

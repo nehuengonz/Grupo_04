@@ -90,17 +90,13 @@ public abstract class ViajeAbstract implements Iviaje {
         return random.nextInt(40);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Viaje [");
-        sb.append("pedido=" + pedido);
-        sb.append(", chofer=" + chofer);
-        sb.append(", vehiculo=" + vehiculo);
-        // You can add details from overridden methods in subclasses here
-        sb.append("]");
-        return sb.toString();
-    }
-    
+	@Override
+	public String toString() {
+		return "ViajeAbstract [costo_base=" + costo_base + ", viaje=" + viaje + ", pedido=" + pedido + ", chofer="
+				+ chofer + ", vehiculo=" + vehiculo + "]";
+	}
+
+
+  
 
 }

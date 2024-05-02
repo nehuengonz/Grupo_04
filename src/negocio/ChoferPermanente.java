@@ -10,7 +10,7 @@ public class ChoferPermanente extends ChoferEmpleado{
     public ChoferPermanente(double plus_X_antiguedad, double plus_X_hijos, String fecha_ingreso) {
         super();
         this.plus_X_antiguedad = plus_X_antiguedad;
-        this.plus_X_hijos = plus_X_hijos;
+        this.plus_X_hijos = plus_X_hijos;//tiene que ser el mismo valor para todos los choferes permanentes osea que podria un atributo estatico
         this.fecha_ingreso = fecha_ingreso;
     }
 
