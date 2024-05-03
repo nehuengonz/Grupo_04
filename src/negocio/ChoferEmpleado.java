@@ -13,7 +13,14 @@ public abstract class ChoferEmpleado extends Chofer{
     }
 
 
-    public double getSueldo_basico() {
+    public ChoferEmpleado(String dni, String nombre,double sueldo_basico, double aportes) {
+		super(dni, nombre);
+		 this.sueldo_basico = sueldo_basico;
+	     this.aportes = aportes;
+	}
+
+
+	public double getSueldo_basico() {
         return sueldo_basico;
     }
 
