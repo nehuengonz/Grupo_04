@@ -62,15 +62,13 @@ public class Sistema {
     }
     vehiculo.setDisponible(false);
 
-    ViajeAbstract viaje;
-    Zona zona = pedido.getZona();
-
    Chofer chofer = getChoferDisponible();
    if(chofer == null) {
      throw new SinChoferDisponibleException();
    }
 
-   FactoryViaje.getViaje(pedido, vehiculo, chofer);
+  Iviaje viaje = FactoryViaje.getViaje(pedido, vehiculo, chofer);
+   viajes.add(viaje);
   }
 
   private Vehiculo vehiculoConMayorPrioridad(Pedido pedido, Moto moto, Automovil automovil, Combi combi) throws SinVehiculosDisponiblesException {

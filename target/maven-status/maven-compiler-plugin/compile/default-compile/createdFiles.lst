@@ -1,10 +1,14 @@
 negocio/Automovil.class
+negocio/FactoryViaje$1.class
 negocio/ChoferTemporario.class
 negocio/ViajeAbstract.class
+negocio/FactoryViaje.class
 negocio/Vehiculo.class
+negocio/ViajeDecorator.class
 negocio/ChoferContratado.class
 module-info.class
 negocio/Administrador.class
+negocio/ViajeConBaul.class
 excepciones/SinVehiculosDisponiblesException.class
 negocio/Sistema.class
 negocio/Zona.class
@@ -21,6 +25,7 @@ excepciones/SinChoferDisponibleException.class
 negocio/factoryVehiculos.class
 negocio/Cliente.class
 negocio/ChoferEmpleado.class
+negocio/ViajeConMascota.class
 negocio/ViajeCalleSinAsfaltar.class
 negocio/Chofer.class
 negocio/Moto.class
