@@ -59,11 +59,11 @@ public class Test {
 
     try {
       c1.solicitaViaje(new Pedido(Zona.ESTANDAR, true, true, "02/01/2020 13:12",
-                                  2)); // con mascota
+                                  2, c1)); // con mascota
       c1.solicitaViaje(new Pedido(Zona.SIN_ASFALTAR, false, true,
-                                  "02/01/2020 13:13", 7)); // con equipaje
+                                  "02/01/2020 13:13", 7, c2)); // con equipaje
       c1.solicitaViaje(
-          new Pedido(Zona.PELIGROSA, false, false, "02/01/2020 13:14", 3));
+          new Pedido(Zona.PELIGROSA, false, false, "02/01/2020 13:14", 3, c3));
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
