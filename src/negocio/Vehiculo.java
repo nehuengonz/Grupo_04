@@ -13,6 +13,7 @@ public abstract class Vehiculo {
     this.cant_max_pasajeros = cant_max_pasajeros;
     this.PF = PF;
     this.baul = baul;
+    this.disponible=true;
   }
   /*
    * Devuelve un Integer indicando el valor de prioridad para el pedido en

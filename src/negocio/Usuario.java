@@ -18,4 +18,18 @@ public abstract class Usuario {
   public String getContrasenia() { return contrasenia; }
 
   public String getNombreReal() { return nombreReal; }
+
+public void setNombreUs(String nombreUs) {
+	this.nombreUs = nombreUs;
+}
+
+public void setContrasenia(String contrasenia) {
+	this.contrasenia = contrasenia;
+}
+
+public void setNombreReal(String nombreReal) {
+	this.nombreReal = nombreReal;
+}
+  
+  
 }

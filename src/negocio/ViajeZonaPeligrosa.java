@@ -1,12 +1,10 @@
 package negocio;
 
 public class ViajeZonaPeligrosa extends ViajeAbstract {
-    private static final double aumento_por_pasajero=0.1;
-    private static final double aumento_por_km=0.2;
-    public ViajeZonaPeligrosa(Pedido pedido) {
-        super(pedido);
+    
+    public ViajeZonaPeligrosa(Pedido pedido, Vehiculo vehiculo, Chofer chofer) {
+        super(pedido, vehiculo, chofer);
     }
-
     @Override
     public double getCantPasajeros() {
         return pedido.getCantPasajeros();
@@ -15,7 +13,7 @@ public class ViajeZonaPeligrosa extends ViajeAbstract {
     @Override
     public double getDistanciaRecorridaEnKm() {
         // TODO Implement this method
-        return 0.0;
+        return this.pedido.getCantPasajeros();
     }
 
     @Override

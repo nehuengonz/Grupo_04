@@ -33,7 +33,11 @@ public class Pedido {
 
   public Cliente getCliente() { return cliente; }
 
-  public double getCosto(){
-    return 0;
-  }
+@Override
+public String toString() {
+	return "Pedido [zona=" + zona + ", SPF=" + SPF + ", usaBaul=" + usaBaul + ", fecha=" + fecha + ", cantPasajeros="
+			+ cantPasajeros + ", cliente=" + cliente + "]";
+}
+
+  
 }

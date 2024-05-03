@@ -1,23 +1,33 @@
 package negocio;
 
 public class ViajeConMascota extends ViajeDecorator {
+    private static final double aumento_por_pasajero=0.1;
+    private static final double aumento_por_km=0.2;
 
-    public ViajeConMascota(ViajeAbstract viaje) {
+    public ViajeConMascota(ViajeAbstract viaje){
         super(viaje);
     }
 
+    public double getCosto() {
+        return viajeWrapee.getCosto()*
+        (aumento_por_pasajero*viajeWrapee.getCantPasajeros())*
+        (aumento_por_km)*viajeWrapee.getDistanciaRecorridaEnKm();
+     }
+
     @Override
     public double getCantPasajeros() {
-        return 0;
+        return viajeWrapee.getCantPasajeros();
     }
 
     @Override
     public double getDistanciaRecorridaEnKm() {
-        return 0;
+        return viajeWrapee.getDistanciaRecorridaEnKm();
     }
 
-    @Override
-    public double getCosto() {
-        return viajeWrapee.getCosto() + costoBase * (0.1 * getCantPasajeros() + 0.2 * getDistanciaRecorridaEnKm());
-    }
+	@Override
+	public String toString() {
+		return viajeWrapee.toString();
+	}
+
+
 }

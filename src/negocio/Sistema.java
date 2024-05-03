@@ -1,6 +1,7 @@
 package negocio;
 
 import excepciones.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class Sistema {
   private ArrayList<Chofer> choferes = new ArrayList<>();
   private ArrayList<Vehiculo> vehiculos = new ArrayList<>();
   private ArrayList<Cliente> clientes = new ArrayList<>();
-  private ArrayList<ViajeAbstract> viajes = new ArrayList<>();
+  private ArrayList<Iviaje> viajes = new ArrayList<>();
 
   private Sistema() {
     // privado por el patron Singleton
@@ -36,7 +37,7 @@ public class Sistema {
 
   public ArrayList<Cliente> getClientes() { return clientes; }
 
-  public ArrayList<ViajeAbstract> getViajes() { return viajes; }
+  public ArrayList<Iviaje> getViajes() { return viajes; }
 
   // metodos del sistema
   /*
@@ -64,18 +65,13 @@ public class Sistema {
 
     ViajeAbstract viaje;
     Zona zona = pedido.getZona();
-    viaje = ViajeAbstract.fromZona(zona, pedido);
-   if(pedido.getUsaBaul()) {
-     viaje = new ViajeConBaul(viaje);
-   }
-   if(pedido.isSPF()) {
-     viaje = new ViajeConMascota(viaje);
-   }
+
    Chofer chofer = getChoferDisponible();
    if(chofer == null) {
      throw new SinChoferDisponibleException();
    }
-   viaje.setChofer(chofer);
+
+   FactoryViaje.getViaje(pedido, vehiculo, chofer);
   }
 
   private Vehiculo vehiculoConMayorPrioridad(Pedido pedido, Moto moto, Automovil automovil, Combi combi) throws SinVehiculosDisponiblesException {
@@ -118,7 +114,7 @@ public class Sistema {
   }
   private Moto getMotoDisponible() {
     for (Vehiculo v : vehiculos) {
-      if (v.isDisponible() && v instanceof Moto)
+      if (v.isDisponible() && v instanceof Moto) 
         return (Moto)v;
     }
     return null;
@@ -130,6 +126,7 @@ public class Sistema {
     }
     return null;
   }
+
   public void agregarVehiculo(Vehiculo vehiculo) { vehiculos.add(vehiculo); }
   public void sacaVehiculo(Vehiculo vehiculo) { vehiculos.remove(vehiculo); }
   public void agregaChofer(Chofer chofer) { choferes.add(chofer); }
@@ -137,34 +134,9 @@ public class Sistema {
   public void agregaCliente(Cliente cliente) { clientes.add(cliente); }
   public void sacaCliente(Cliente cliente) { clientes.remove(cliente); }
 
-  public void agregaViaje(ViajeAbstract viaje) { viajes.add(viaje); }
-  public void sacaViaje(ViajeAbstract viaje) { viajes.remove(viaje); }
+  public void agregaViaje(Iviaje viaje) { viajes.add(viaje); }
+  public void sacaViaje(Iviaje viaje) { viajes.remove(viaje); }
 
-  // devuelve un vehiculo disponible y lo pone como nodisponible, se usa en el
-  // factoryvehiculos.java
-  
-
-  public Vehiculo GetVehiculoDisponible(double cantPasajeros,boolean PF,boolean baul) {
-    if (cantPasajeros == 1 && PF==false  && baul==false) {
-        return vehiculoDisponible("Moto");
-      } else if (cantPasajeros <= 4) {
-        return vehiculoDisponible("Automovil");
-      } else if(PF==false){
-        return vehiculoDisponible("Combi");
-      }else{
-        return null;
-      } 
-    }
-  public Vehiculo vehiculoDisponible(String clase) {
-    Vehiculo aux = null;
-    for (Vehiculo act : vehiculos) {
-      if (act.getClass().getName() == clase && act.disponible == true) {
-        aux = act;
-        aux.disponible = false;
-      }
-    }
-    return aux;
-  }
   public String toStringChoferes() {
     return "Sistema [choferes=" + choferes + "]";
   }
@@ -172,4 +144,12 @@ public class Sistema {
   public String toStringVehiculos() {
     return "Sistema [vehiculos=" + vehiculos + "]";
   }
+
+	@Override
+	public String toString() {
+		return "Sistema [viajes=" + viajes + "]";
+	}
+  
+
+
 }

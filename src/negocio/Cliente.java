@@ -13,8 +13,12 @@ public class Cliente extends Usuario {
   // SPF service pet friendly
   // TE tipo Equipaje
   public void solicitaViaje(Pedido pedido)
+<<<<<<< HEAD
       throws PedidoInvalidoException, SinVehiculosDisponiblesException,
              SinChoferDisponibleException {
+=======
+      throws PedidoInvalidoException, SinVehiculosDisponiblesException, sinchoferesdisponiblesException {
+>>>>>>> main
     sistema.procesarPedido(pedido);
   }
   public void PagaViaje() {}
