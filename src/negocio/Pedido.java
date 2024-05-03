@@ -1,7 +1,7 @@
 package negocio;
 
-import java.time.LocalDate;
-import java.util.Calendar;
+import java.time.*;
+
 
 
 /*
@@ -11,7 +11,7 @@ public class Pedido {
   private Zona zona;
   private boolean SPF; // service pet friendly
   private boolean usaBaul;
-  private LocalDate fecha;
+  private LocalDateTime fecha;
   private Integer cantPasajeros;
   private Cliente cliente;
 
@@ -21,12 +21,12 @@ public class Pedido {
     this.zona = zona;
     this.SPF = SPF;
     this.usaBaul = usaBaul;
-    this.fecha =LocalDate.now();
+    this.fecha =LocalDateTime.now();
     this.cantPasajeros = cantPasajeros;
   }
   
 
-  public Pedido(Zona zona, boolean sPF, boolean usaBaul, LocalDate fecha, Integer cantPasajeros) {
+  public Pedido(Zona zona, boolean sPF, boolean usaBaul, LocalDateTime fecha, Integer cantPasajeros) {
 	super();
 	this.zona = zona;
 	SPF = sPF;
@@ -42,9 +42,9 @@ public Zona getZona() { return zona; }
 
   public boolean getUsaBaul() { return usaBaul; }
 
-  public LocalDate getFecha() { return fecha; }
+  public LocalDateTime getFecha() { return fecha; }
   
- public void setFecha(LocalDate fecha) {this.fecha = fecha;}
+ public void setFecha(LocalDateTime fecha) {this.fecha = fecha;}
 
 public Integer getCantPasajeros() { return cantPasajeros; }
 

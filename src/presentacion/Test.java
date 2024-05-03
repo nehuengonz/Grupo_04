@@ -59,7 +59,7 @@ public class Test {
     // listar clientes devuelve la arraylist de clientes
     admin.ListadoClientes();
 
-    LocalDate d22=LocalDate.now();
+    LocalDateTime d22=LocalDateTime.now();
     
     
     try {
