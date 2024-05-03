@@ -13,7 +13,8 @@ public class Test {
     ChoferContratado Chofer3 = new ChoferContratado("111111", "pedro", 67000);
     ChoferContratado Chofer4 = new ChoferContratado("999999", "yo", 1000);
     ChoferPermanente chofer5=new ChoferPermanente("123124","persona1",100000,20);
-
+    ChoferTemporario chofer6=new ChoferTemporario("999999", "yo", 100000,20);
+    
     LocalDate l5=LocalDate.of(2000, 03, 3);
     chofer5.setFecha_ingreso(l5);
     SYS.agregaChofer(Chofer1);
@@ -21,6 +22,10 @@ public class Test {
     SYS.agregaChofer(Chofer3);
     SYS.agregaChofer(Chofer4);
     SYS.agregaChofer(chofer5);
+    SYS.agregaChofer(chofer6);
+    System.out.println(chofer6.getSueldoBruto());
+    System.out.println(chofer6.getSueldoNeto());
+    
     System.out.println(chofer5.getSueldoBruto());
     System.out.println(chofer5.getSueldoNeto());
     /*
