@@ -59,8 +59,8 @@ public class Test {
     // listar clientes devuelve la arraylist de clientes
     admin.ListadoClientes();
 
-    //d11.setTime(47520000);//13:12 
-    Calendar d22=Calendar.getInstance();
+    LocalDate d22=LocalDate.now();
+    
     
     try {
       c1.solicitaViaje(new Pedido(Zona.ESTANDAR, true, true, d22,

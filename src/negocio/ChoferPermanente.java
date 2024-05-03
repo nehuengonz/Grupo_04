@@ -1,24 +1,24 @@
 package negocio;
 
 import java.util.Calendar;
-import java.util.Date;
+import java.time.*;
 
 public class ChoferPermanente extends ChoferEmpleado{
+	
+	//tiene que ser el mismo valor para todos los choferes permanentes osea que podria un atributo estatico
+    protected static double plus_X_antiguedad=1.12;// en decimal de 1 a 100
+    protected static double plus_X_hijos=1.06;
+    protected LocalDate fecha_ingreso;
 
-    protected double plus_X_antiguedad;// en decimal de 1 a 100
-    protected double plus_X_hijos;
-    protected Calendar fecha_ingreso;
 
-
-    public ChoferPermanente(double plus_X_antiguedad, double plus_X_hijos,Date fecha_ingreso) {
+    public ChoferPermanente(LocalDate fecha_ingreso) {
         super();
-        this.plus_X_antiguedad = plus_X_antiguedad;
-        this.plus_X_hijos = plus_X_hijos;//tiene que ser el mismo valor para todos los choferes permanentes osea que podria un atributo estatico
-        this.fecha_ingreso = Calendar.getInstance();
+        this.fecha_ingreso = fecha_ingreso;
     }
 
     public ChoferPermanente() {
         super();
+        this.fecha_ingreso=LocalDate.now();
     }
 
     @Override
