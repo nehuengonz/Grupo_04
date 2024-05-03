@@ -52,8 +52,7 @@ public class Sistema {
    * se asigna y el viaje pasa a 'iniciado'.
    */
   public void procesarPedido(Pedido pedido)
-      throws PedidoInvalidoException, SinVehiculosDisponiblesException,
-             SinChoferDisponibleException, Exception {
+      throws Exception {
     Combi combi = getCombiDisponible();
     Automovil automovil = getAutomovilDisponible();
     Moto moto = getMotoDisponible();

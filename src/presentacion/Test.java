@@ -1,11 +1,10 @@
 package presentacion;
 
-import excepciones.*;
 import negocio.*;
 
 public class Test {
 
-  public static void main(String[] args) throws UsuarioRepetidoException, sinchoferesdisponiblesException {
+  public static void main(String[] args) {
     Sistema SYS = Sistema.getInstance();
     ChoferContratado Chofer1 = new ChoferContratado("123456", "juan", 2000);
     ChoferContratado Chofer2 = new ChoferContratado("333333", "pablo", 12000);
@@ -51,42 +50,22 @@ public class Test {
     //
     // ALTA VEHICULO
     //admin.altasVehiculo("Moto", "111222");
-    for(Vehiculo v:SYS.getVehiculos())
+    for(Vehiculo v : SYS.getVehiculos())
     {
-    	//System.out.println(v.toString());
+    	System.out.println(v.toString());
     }
     // listar clientes devuelve la arraylist de clientes
     admin.ListadoClientes();
 
     try {
-<<<<<<< HEAD
       c1.solicitaViaje(new Pedido(Zona.ESTANDAR, true, true, "02/01/2020 13:12",
                                   2)); // con mascota
       c1.solicitaViaje(new Pedido(Zona.SIN_ASFALTAR, false, true,
                                   "02/01/2020 13:13", 7)); // con equipaje
       c1.solicitaViaje(
           new Pedido(Zona.PELIGROSA, false, false, "02/01/2020 13:14", 3));
-=======
-//      c1.solicitaViaje(new Pedido("Estandar", true, true, "02/01/2020 13:12",
-//                                  2)); // con mascota
-//      c1.solicitaViaje(new Pedido("Calle sin asfaltar", false, true,
-//                                  "02/01/2020 13:13", 7)); // con equipaje
-//      c1.solicitaViaje(
-//          new Pedido("Zona Peligrosa", false, false, "02/01/2020 13:14", 3));
-
-    	
-    	Pedido p1=new Pedido("Estandar", true, true, "02/01/2020 13:12",2);
-    	c1.solicitaViaje(p1);
-    	System.out.println(SYS.toString());
-		//SYS.procesarPedido(p1);
-		  
->>>>>>> main
-    } catch (PedidoInvalidoException e) {
-      System.out.println(e);
-    } catch (SinVehiculosDisponiblesException e) {
-      System.out.println(e);
-    } catch (SinChoferDisponibleException e) {
-      System.out.println(e);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
     }
 
 	

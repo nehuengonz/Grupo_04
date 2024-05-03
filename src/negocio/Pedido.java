@@ -12,13 +12,14 @@ public class Pedido {
   private Cliente cliente;
 
   public Pedido(Zona zona, boolean SPF, boolean usaBaul, String fecha,
-                Integer cantPasajeros) {
+                Integer cantPasajeros, Cliente cliente) {
     super();
     this.zona = zona;
     this.SPF = SPF;
     this.usaBaul = usaBaul;
     this.fecha = fecha;
     this.cantPasajeros = cantPasajeros;
+    this.cliente = cliente;
   }
 
   public Zona getZona() { return zona; }

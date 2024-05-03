@@ -17,7 +17,7 @@ public class Administrador extends Usuario {
     Cliente c = new Cliente(username, password, realname);
     try {
       for (Cliente cliAct : clientes) {
-        if (cliAct.getNombreUs() == c.getNombreUs()) {
+        if (cliAct.getNombreUs().equals(c.getNombreUs())) {
           throw new UsuarioRepetidoException();
         }
       }

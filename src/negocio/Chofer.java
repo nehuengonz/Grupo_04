@@ -1,20 +1,15 @@
 package negocio;
 
 public abstract class Chofer {
-<<<<<<< HEAD
   protected String dni;
   protected String nombre;
   protected boolean ocupado;
-=======
-    protected String  dni;
-    protected String nombre;
-    protected boolean disponible=true;
->>>>>>> main
 
   public Chofer(String dni, String nombre) {
     super();
     this.dni = dni;
     this.nombre = nombre;
+    ocupado = false;
   }
 
   public Chofer() { super(); }
@@ -32,27 +27,16 @@ public abstract class Chofer {
   public abstract double getSueldoBruto();
   public abstract double getSueldoNeto();
 
-<<<<<<< HEAD
   @Override
   public String toString() {
     return "Chofer [dni=" + dni + ", nombre=" + nombre + "]";
   }
-=======
-    public abstract double getSueldoBruto();
-    public abstract double getSueldoNeto();
 
-	@Override
-	public String toString() {
-		return "Chofer [dni=" + dni + ", nombre=" + nombre + "]";
-	}
-
-    public boolean isDisponible() {
-        return disponible;
+  public boolean isDisponible() {
+        return !ocupado;
     }
 
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
+  public void setDisponible(boolean disponible) {
+        this.ocupado = !disponible;
     }
-    
->>>>>>> main
 }
