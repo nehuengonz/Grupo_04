@@ -15,6 +15,7 @@ public class Cliente extends Usuario {
   public void solicitaViaje(Pedido pedido)
       throws Exception {
     sistema.procesarPedido(pedido);
+    pedido.setCliente(this);
   }
   public void PagaViaje() {}
   public void CalificaChofer() {}
