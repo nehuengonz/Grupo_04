@@ -12,14 +12,17 @@ public class Test {
     ChoferContratado Chofer2 = new ChoferContratado("333333", "pablo", 12000);
     ChoferContratado Chofer3 = new ChoferContratado("111111", "pedro", 67000);
     ChoferContratado Chofer4 = new ChoferContratado("999999", "yo", 1000);
-    ChoferPermanente chofer5=new ChoferPermanente("123124","persona1",100000,20000);
+    ChoferPermanente chofer5=new ChoferPermanente("123124","persona1",100000,20);
 
+    LocalDate l5=LocalDate.of(2000, 03, 3);
+    chofer5.setFecha_ingreso(l5);
     SYS.agregaChofer(Chofer1);
     SYS.agregaChofer(Chofer2);
     SYS.agregaChofer(Chofer3);
     SYS.agregaChofer(Chofer4);
     SYS.agregaChofer(chofer5);
-    System.out.println(chofer5.toString());
+    System.out.println(chofer5.getSueldoBruto());
+    System.out.println(chofer5.getSueldoNeto());
     /*
     System.out.println(Chofer1.toString());
     System.out.println(Chofer2.toString());
