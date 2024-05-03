@@ -1,6 +1,8 @@
 package presentacion;
 
 import negocio.*;
+import java.time.*;
+import java.util.*;
 
 public class Test {
 
@@ -57,13 +59,17 @@ public class Test {
     // listar clientes devuelve la arraylist de clientes
     admin.ListadoClientes();
 
+    //d11.setTime(47520000);//13:12 
+    Calendar d22=Calendar.getInstance();
+    
     try {
-      c1.solicitaViaje(new Pedido(Zona.ESTANDAR, true, true, "02/01/2020 13:12",
-                                  2, c1)); // con mascota
+      c1.solicitaViaje(new Pedido(Zona.ESTANDAR, true, true, d22,
+                                  2)); // con mascota
       c1.solicitaViaje(new Pedido(Zona.SIN_ASFALTAR, false, true,
-                                  "02/01/2020 13:13", 7, c2)); // con equipaje
+                                  d22, 7)); // con equipaje
       c1.solicitaViaje(
-          new Pedido(Zona.PELIGROSA, false, false, "02/01/2020 13:14", 3, c3));
+          new Pedido(Zona.PELIGROSA, false, false, d22, 3));
+      
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
