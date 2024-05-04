@@ -23,8 +23,8 @@ public class Test {
     SYS.agregaChofer(Chofer4);
     SYS.agregaChofer(chofer5);
     SYS.agregaChofer(chofer6);
-    System.out.println(chofer6.getSueldoBruto());
-    System.out.println(chofer6.getSueldoNeto());
+    //solo los choferes permanentes tienen sueldo bruto y sueldo neto
+    System.out.println(SYS.getSueldoBrutoChofer("123124"));
     
     System.out.println(chofer5.getSueldoBruto());
     System.out.println(chofer5.getSueldoNeto());

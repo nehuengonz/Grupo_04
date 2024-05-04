@@ -134,6 +134,24 @@ public class Sistema {
   public void agregaViaje(Iviaje viaje) { viajes.add(viaje); }
   public void sacaViaje(Iviaje viaje) { viajes.remove(viaje); }
 
+  public double getSueldoBrutoChofer(String dni) {
+	  double ans=0;
+	  for(Chofer chof:choferes) {
+		  if(chof.getDni().equalsIgnoreCase(dni)) {
+			  ans=chof.getSueldoBruto();
+		  }
+	  }
+	  return ans;
+  }
+  public double getSueldoNetoChofer(String dni) {
+	  double ans=0;
+	  for(Chofer chof:choferes) {
+		  if(chof.getDni().contains(dni)) {
+			  ans=chof.getSueldoNeto();
+		  }
+	  }
+	  return ans;
+  }
   public String toStringChoferes() {
     return "Sistema [choferes=" + choferes + "]";
   }
