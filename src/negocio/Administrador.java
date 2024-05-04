@@ -10,7 +10,6 @@ public class Administrador extends Usuario {
     super(nombreUs, contrasenia, nombreReal);
     sistema = Sistema.getInstance();
   }
-  public Administrador() { sistema = Sistema.getInstance(); }
   public void altasCliente(String username, String password, String realname)
       throws UsuarioRepetidoException {
     ArrayList<Cliente> clientes = sistema.getClientes();

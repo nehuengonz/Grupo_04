@@ -3,12 +3,11 @@ package negocio;
 import excepciones.*;
 
 public class Cliente extends Usuario {
-  private Sistema sistema = Sistema.getInstance();
-  public Cliente() { super(); }
+  private Sistema sistema;
 
   public Cliente(String nombreUs, String contrasenia, String nombreReal) {
-    // TODO Implement this method
     super(nombreUs, contrasenia, nombreReal);
+    sistema = Sistema.getInstance();
   }
   // SPF service pet friendly
   // TE tipo Equipaje

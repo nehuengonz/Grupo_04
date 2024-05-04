@@ -6,6 +6,7 @@ negocio/FactoryViaje.class
 negocio/Vehiculo.class
 negocio/ViajeDecorator.class
 negocio/ChoferContratado.class
+negocio/IViaje.class
 module-info.class
 negocio/Administrador.class
 negocio/ViajeConBaul.class
@@ -14,8 +15,6 @@ negocio/Sistema.class
 negocio/Zona.class
 negocio/Combi.class
 presentacion/Test.class
-negocio/Viaje.class
-negocio/Iviaje.class
 negocio/ViajeZonaPeligrosa.class
 negocio/ChoferPermanente.class
 negocio/Usuario.class
