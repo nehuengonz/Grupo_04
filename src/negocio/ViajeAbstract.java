@@ -47,8 +47,9 @@ public abstract class ViajeAbstract implements IViaje {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        pedido = (Pedido)pedido.clone();
-        return super.clone();
+        ViajeAbstract clon = (ViajeAbstract)super.clone();
+        clon.pedido = (Pedido)pedido.clone();
+        return clon;
     }
 
     @Override
