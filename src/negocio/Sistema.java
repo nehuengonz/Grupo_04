@@ -156,19 +156,53 @@ public class Sistema {
   public void agregaViaje(IViaje viaje) { viajes.add(viaje); }
   public void sacaViaje(IViaje viaje) { viajes.remove(viaje); }
 
+  // Listados
   public void listadoClientes() {
     for(Cliente cliente : clientes)
       System.out.println(cliente);
   }
-
   public void listadoChoferes() {
     for(Chofer chofer : choferes)
       System.out.println(chofer);
   }
-
   public void listadoVehiculos() {
     for(Vehiculo vehiculo : vehiculos)
       System.out.println(vehiculo);
+  }
+  public void listadoViajes() {
+    ArrayList<ViajeAbstract> clonViajes = new ArrayList<>();
+    for(IViaje viaje : viajes)
+      clonViajes.add((ViajeAbstract)viaje);
+    quicksort(clonViajes, 0, clonViajes.size() - 1);
+    for(ViajeAbstract viaje : clonViajes)
+      System.out.println(viaje);
+  }
+
+  public void quicksort(ArrayList<ViajeAbstract> array, int begin, int end) {
+    if(begin >= end) return;
+
+    int partitionIndex = partition(array, begin, end);
+
+    quicksort(array, begin, partitionIndex-1);
+    quicksort(array, partitionIndex+1, end);
+  }
+  private int partition(ArrayList<ViajeAbstract> array, int begin, int end) {
+    ViajeAbstract pivot = array.get(end);
+    int i = begin-1;
+
+    for(int j = begin; j < end; j++) {
+      if(array.get(j).compareTo(pivot) > 0) {
+        i++;
+        swap(array, i, j);
+      }
+    }
+    swap(array, i+1, end);
+    return i+1;
+  }
+  private void swap(ArrayList<ViajeAbstract> array, int i, int j) {
+    ViajeAbstract temp = array.get(i);
+    array.set(i, array.get(j));
+    array.set(j, temp);
   }
 
   public double getSueldoBrutoChofer(String dni) {

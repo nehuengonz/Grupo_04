@@ -2,7 +2,7 @@ package negocio;
 
 import java.util.Random;
 
-public abstract class ViajeAbstract implements IViaje {
+public abstract class ViajeAbstract implements IViaje, Comparable<ViajeAbstract> {
     protected double costoBase = 1000;
 
     protected Pedido pedido;
@@ -56,5 +56,10 @@ public abstract class ViajeAbstract implements IViaje {
     public String toString() {
         return "ViajeAbstract [costo_base=" + costoBase + ", pedido=" + pedido + ", chofer="
                 + chofer + ", vehiculo=" + vehiculo + "]";
+    }
+
+    @Override
+    public int compareTo(ViajeAbstract o) {
+        return Double.compare(getCosto(), o.getCosto());
     }
 }
