@@ -2,7 +2,7 @@ package negocio;
 
 import java.util.Random;
 
-public abstract class ViajeAbstract implements Iviaje {
+public abstract class ViajeAbstract implements IViaje {
     protected double costoBase = 1000;
 
     protected Pedido pedido;
@@ -46,9 +46,14 @@ public abstract class ViajeAbstract implements Iviaje {
     }
 
     @Override
+    protected Object clone() throws CloneNotSupportedException {
+        pedido = (Pedido)pedido.clone();
+        return super.clone();
+    }
+
+    @Override
     public String toString() {
         return "ViajeAbstract [costo_base=" + costoBase + ", pedido=" + pedido + ", chofer="
                 + chofer + ", vehiculo=" + vehiculo + "]";
     }
-
 }

@@ -11,25 +11,21 @@ public abstract class Usuario {
     this.nombreReal = nombreReal;
   }
 
-  public Usuario() { super(); }
-
   public String getNombreUs() { return nombreUs; }
 
   public String getContrasenia() { return contrasenia; }
 
   public String getNombreReal() { return nombreReal; }
 
-public void setNombreUs(String nombreUs) {
-	this.nombreUs = nombreUs;
-}
+  public void setNombreUs(String nombreUs) {
+      this.nombreUs = nombreUs;
+  }
 
-public void setContrasenia(String contrasenia) {
-	this.contrasenia = contrasenia;
-}
+  public void setContrasenia(String contrasenia) {
+      this.contrasenia = contrasenia;
+  }
 
-public void setNombreReal(String nombreReal) {
-	this.nombreReal = nombreReal;
+  public void setNombreReal(String nombreReal) {
+        this.nombreReal = nombreReal;
 }
-  
-  
 }

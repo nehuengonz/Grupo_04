@@ -3,7 +3,7 @@ package negocio;
 public class ViajeConBaul extends ViajeDecorator {
     private static final double aumento_por_pasajero=0.1;
     private static final double aumento_por_km=0.05;
-    private Iviaje viaje;
+    private IViaje viaje;
 
     public ViajeConBaul(ViajeAbstract viaje) {
         super(viaje);

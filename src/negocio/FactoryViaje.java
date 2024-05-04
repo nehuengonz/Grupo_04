@@ -2,7 +2,7 @@ package negocio;
 
 public class FactoryViaje {
 	
-	  public static Iviaje getViaje(Pedido pedido, Vehiculo vehiculo, Chofer chofer) throws Exception {
+	  public static IViaje getViaje(Pedido pedido, Vehiculo vehiculo, Chofer chofer) throws Exception {
 		  	ViajeAbstract respuesta = null;
 		  	ViajeAbstract encapsulado = null;
 		    //si la zona esta contemplada

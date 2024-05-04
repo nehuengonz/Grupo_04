@@ -1,6 +1,6 @@
 package negocio;
 
-public interface Iviaje {
+public interface IViaje extends Cloneable {
     double getCantPasajeros();
     double getDistanciaRecorridaEnKm();
     double getCosto();

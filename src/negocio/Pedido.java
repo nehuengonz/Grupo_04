@@ -7,7 +7,7 @@ import java.time.*;
 /*
  * @invariant zona, SPF, usaBaul, fecha, cantPasajeros, cliente.
  */
-public class Pedido {
+public class Pedido implements Cloneable {
   private Zona zona;
   private boolean SPF; // service pet friendly
   private boolean usaBaul;
@@ -33,10 +33,10 @@ public class Pedido {
 	this.usaBaul = usaBaul;
 	this.fecha = fecha;
 	this.cantPasajeros = cantPasajeros;
-}
+  }
 
 
-public Zona getZona() { return zona; }
+  public Zona getZona() { return zona; }
 
   public boolean isSPF() { return SPF; }
 
@@ -44,21 +44,24 @@ public Zona getZona() { return zona; }
 
   public LocalDateTime getFecha() { return fecha; }
   
- public void setFecha(LocalDateTime fecha) {this.fecha = fecha;}
+  public void setFecha(LocalDateTime fecha) {this.fecha = fecha;}
 
-public Integer getCantPasajeros() { return cantPasajeros; }
+  public Integer getCantPasajeros() { return cantPasajeros; }
 
   public Cliente getCliente() { return cliente; }
 
-	public void setCliente(Cliente cliente) {
+  public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
-@Override
-public String toString() {
-	return "Pedido [zona=" + zona + ", SPF=" + SPF + ", usaBaul=" + usaBaul + ", fecha=" + fecha + ", cantPasajeros="
-			+ cantPasajeros + ", cliente=" + cliente + "]";
-}
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
-  
+    @Override
+  public String toString() {
+      return "Pedido [zona=" + zona + ", SPF=" + SPF + ", usaBaul=" + usaBaul + ", fecha=" + fecha + ", cantPasajeros="
+              + cantPasajeros + ", cliente=" + cliente + "]";
+  }
 }

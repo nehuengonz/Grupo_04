@@ -14,7 +14,7 @@ public class Sistema {
   private ArrayList<Chofer> choferes = new ArrayList<>();
   private ArrayList<Vehiculo> vehiculos = new ArrayList<>();
   private ArrayList<Cliente> clientes = new ArrayList<>();
-  private ArrayList<Iviaje> viajes = new ArrayList<>();
+  private ArrayList<IViaje> viajes = new ArrayList<>();
 
   private Sistema() {
     // privado por el patron Singleton
@@ -37,7 +37,7 @@ public class Sistema {
 
   public ArrayList<Cliente> getClientes() { return clientes; }
 
-  public ArrayList<Iviaje> getViajes() { return viajes; }
+  public ArrayList<IViaje> getViajes() { return viajes; }
 
   // metodos del sistema
   /**
@@ -71,13 +71,13 @@ public class Sistema {
       throw new SinChoferDisponibleException();
     }
 
-    Iviaje viaje = FactoryViaje.getViaje(pedido, vehiculo, chofer);
+    IViaje viaje = FactoryViaje.getViaje(pedido, vehiculo, chofer);
   }
 
   private boolean pedidoValido(Pedido pedido) {
     if(pedido.getCantPasajeros() > 10)
       return false;
-      return pedido.getCantPasajeros() <= 4 || !pedido.isSPF();
+    return pedido.getCantPasajeros() <= 4 || !pedido.isSPF();
   }
 
   private Vehiculo vehiculoConMayorPrioridad(Pedido pedido, Moto moto, Automovil automovil, Combi combi) throws SinVehiculosDisponiblesException {
@@ -152,8 +152,8 @@ public class Sistema {
   public void agregaCliente(Cliente cliente) { clientes.add(cliente); }
   public void sacaCliente(Cliente cliente) { clientes.remove(cliente); }
 
-  public void agregaViaje(Iviaje viaje) { viajes.add(viaje); }
-  public void sacaViaje(Iviaje viaje) { viajes.remove(viaje); }
+  public void agregaViaje(IViaje viaje) { viajes.add(viaje); }
+  public void sacaViaje(IViaje viaje) { viajes.remove(viaje); }
 
   public double getSueldoBrutoChofer(String dni) {
 	  double ans=0;

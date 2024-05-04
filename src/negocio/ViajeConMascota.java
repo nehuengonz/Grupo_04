@@ -24,10 +24,8 @@ public class ViajeConMascota extends ViajeDecorator {
         return viajeWrapee.getDistanciaRecorridaEnKm();
     }
 
-	@Override
+    @Override
 	public String toString() {
 		return viajeWrapee.toString();
 	}
-
-
 }
