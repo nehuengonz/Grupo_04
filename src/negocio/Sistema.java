@@ -72,6 +72,7 @@ public class Sistema {
     }
 
     IViaje viaje = FactoryViaje.getViaje(pedido, vehiculo, chofer);
+    viajes.add(viaje);
   }
 
   private boolean pedidoValido(Pedido pedido) {
@@ -145,15 +146,30 @@ public class Sistema {
     return null;
   }
 
+  // Altas y bajas
   public void agregarVehiculo(Vehiculo vehiculo) { vehiculos.add(vehiculo); }
   public void sacaVehiculo(Vehiculo vehiculo) { vehiculos.remove(vehiculo); }
   public void agregaChofer(Chofer chofer) { choferes.add(chofer); }
   public void sacaChofer(Chofer chofer) { choferes.remove(chofer); }
   public void agregaCliente(Cliente cliente) { clientes.add(cliente); }
   public void sacaCliente(Cliente cliente) { clientes.remove(cliente); }
-
   public void agregaViaje(IViaje viaje) { viajes.add(viaje); }
   public void sacaViaje(IViaje viaje) { viajes.remove(viaje); }
+
+  public void listadoClientes() {
+    for(Cliente cliente : clientes)
+      System.out.println(cliente);
+  }
+
+  public void listadoChoferes() {
+    for(Chofer chofer : choferes)
+      System.out.println(chofer);
+  }
+
+  public void listadoVehiculos() {
+    for(Vehiculo vehiculo : vehiculos)
+      System.out.println(vehiculo);
+  }
 
   public double getSueldoBrutoChofer(String dni) {
 	  double ans=0;

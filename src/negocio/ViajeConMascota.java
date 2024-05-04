@@ -9,9 +9,9 @@ public class ViajeConMascota extends ViajeDecorator {
     }
 
     public double getCosto() {
-        return viajeWrapee.getCosto()*
-        (aumento_por_pasajero*viajeWrapee.getCantPasajeros())*
-        (aumento_por_km)*viajeWrapee.getDistanciaRecorridaEnKm();
+        return viajeWrapee.getCosto() +
+        aumento_por_pasajero * viajeWrapee.getCantPasajeros() +
+        (aumento_por_km) * viajeWrapee.getDistanciaRecorridaEnKm();
      }
 
     @Override

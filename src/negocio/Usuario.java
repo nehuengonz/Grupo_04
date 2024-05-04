@@ -28,4 +28,9 @@ public abstract class Usuario {
   public void setNombreReal(String nombreReal) {
         this.nombreReal = nombreReal;
 }
+
+  @Override
+  public String toString() {
+    return "{ nombre de usuario: " + nombreUs + ", contraseña: " + contrasenia + ", nombre real:" + nombreReal + " }";
+  }
 }
