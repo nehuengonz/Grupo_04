@@ -40,7 +40,7 @@ public class Sistema {
   public ArrayList<Iviaje> getViajes() { return viajes; }
 
   // metodos del sistema
-  /*
+  /**
    * Lanza PedidoInvalidoException si no es posible asignar un vehículo (aunque
    * haya vehículos de todos los tipos). Por ejemplo si el pedido tiene más de
    * 10 pasajeros (ningún vehículo puede llevar más de 10). Lanza
@@ -50,6 +50,8 @@ public class Sistema {
    * Finalmente se asigna un chofer al viaje. Si no hay choferes disponibles,
    * lanza SinChoferDisponibleException. En cambio, si hay un chofer disponible,
    * se asigna y el viaje pasa a 'iniciado'.
+   * @param pedido
+   * @throws Exception
    */
   public void procesarPedido(Pedido pedido)
       throws Exception {
@@ -62,13 +64,12 @@ public class Sistema {
     }
     vehiculo.setDisponible(false);
 
-   Chofer chofer = getChoferDisponible();
-   if(chofer == null) {
-     throw new SinChoferDisponibleException();
-   }
+    Chofer chofer = getChoferDisponible();
+    if(chofer == null) {
+      throw new SinChoferDisponibleException();
+    }
 
-  Iviaje viaje = FactoryViaje.getViaje(pedido, vehiculo, chofer);
-   viajes.add(viaje);
+    Iviaje viaje = FactoryViaje.getViaje(pedido, vehiculo, chofer);
   }
 
   private Vehiculo vehiculoConMayorPrioridad(Pedido pedido, Moto moto, Automovil automovil, Combi combi) throws SinVehiculosDisponiblesException {
@@ -89,6 +90,12 @@ public class Sistema {
       }
     }
     return vehiculoMayorPrioridad;
+  }
+
+  public void registrarViajeFinalizado(ViajeAbstract viaje) {
+    viajes.add(viaje);
+    choferes.remove(viaje.getChofer());
+    choferes.add(viaje.getChofer());
   }
 
   /*
@@ -164,7 +171,4 @@ public class Sistema {
 	public String toString() {
 		return "Sistema [viajes=" + viajes + "]";
 	}
-  
-
-
 }

@@ -12,6 +12,7 @@ public class ChoferContratado extends Chofer{
 	public ChoferContratado() {
         super();
     }
+
     public void setGanancia_viaje(double ganancia_viaje) {
         this.ganancia_viaje = ganancia_viaje;
     }
