@@ -17,7 +17,11 @@ public class Cliente extends Usuario {
     sistema.procesarPedido(pedido);
     pedido.setCliente(this);
   }
-  public void PagaViaje() {}
-  public void CalificaChofer() {}
+  public void pagaViaje(ViajeAbstract viaje) {
+    sistema.procesarPago(viaje.getCosto());
+  }
+  public void CalificaChofer() {
+    sistema.guardarCalificacionChofer();
+  }
   public void HistorialViajes() {}
 }

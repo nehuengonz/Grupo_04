@@ -60,7 +60,9 @@ public class Sistema {
     Moto moto = getMotoDisponible();
     Vehiculo vehiculo = vehiculoConMayorPrioridad(pedido, moto, automovil, combi);
     if(vehiculo == null) {
-      throw new PedidoInvalidoException();
+      if(!pedidoValido(pedido))
+        throw new PedidoInvalidoException();
+      throw new SinVehiculosDisponiblesException();
     }
     vehiculo.setDisponible(false);
 
@@ -70,6 +72,12 @@ public class Sistema {
     }
 
     Iviaje viaje = FactoryViaje.getViaje(pedido, vehiculo, chofer);
+  }
+
+  private boolean pedidoValido(Pedido pedido) {
+    if(pedido.getCantPasajeros() > 10)
+      return false;
+      return pedido.getCantPasajeros() <= 4 || !pedido.isSPF();
   }
 
   private Vehiculo vehiculoConMayorPrioridad(Pedido pedido, Moto moto, Automovil automovil, Combi combi) throws SinVehiculosDisponiblesException {
@@ -91,6 +99,12 @@ public class Sistema {
     }
     return vehiculoMayorPrioridad;
   }
+
+  public void procesarPago(double valor) {
+
+  }
+
+  public void guardarCalificacionChofer() {}
 
   public void registrarViajeFinalizado(ViajeAbstract viaje) {
     viajes.add(viaje);
