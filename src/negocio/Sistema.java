@@ -25,7 +25,7 @@ public class Sistema {
     // privado por el patron Singleton
   }
 
-  /*
+  /**
    * Siempre retorna la misma instancia o crea una si todavía no hay.
    * @invariant instancia devuelta.
    */
@@ -59,7 +59,7 @@ public class Sistema {
    * @throws Exception
    */
   public void procesarPedido(Pedido pedido)
-      throws Exception {
+      throws PedidoInvalidoException, SinVehiculosDisponiblesException, SinChoferDisponibleException {
     Combi combi = getCombiDisponible();
     Automovil automovil = getAutomovilDisponible();
     Moto moto = getMotoDisponible();
