@@ -141,13 +141,20 @@ public class Sistema {
   /**
    * @Precondiciones:
    * viaje != null
+   * @Postcondiciones:
+   * chofer y vehiculo del viaje pasan al final de sus listas y quedan marcados como disponibles
    * @param viaje
    */
   public void registrarViajeFinalizado(ViajeAbstract viaje) {
     assert viaje != null;
-    viajes.add(viaje);
-    choferes.remove(viaje.getChofer());
-    choferes.add(viaje.getChofer());
+    Chofer chofer = viaje.getChofer();
+    Vehiculo vehiculo = viaje.getVehiculo();
+    chofer.setOcupado(false);
+    vehiculo.setDisponible(true);
+    choferes.remove(chofer);
+    choferes.add(chofer);
+    vehiculos.remove(vehiculo);
+    vehiculos.add(vehiculo);
   }
 
   /**
