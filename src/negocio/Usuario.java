@@ -1,5 +1,8 @@
 package negocio;
 
+/**
+ * cse bstracta usuario que obtiene los atributos comunes de Administrador y Cliente
+ */
 public abstract class Usuario {
   protected String nombreUs;
   protected String contrasenia;

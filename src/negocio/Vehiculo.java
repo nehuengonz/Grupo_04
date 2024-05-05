@@ -1,5 +1,8 @@
 package negocio;
 
+/**
+ * clase abstracta vehiculo que obtiene los atributos comunes de todoslos tipos de vehiculos de la empresa
+ */
 public abstract class Vehiculo {
   protected String nropatente;
   protected double cant_max_pasajeros;

@@ -1,5 +1,8 @@
 package negocio;
 
+/**
+ * clase concreta de vehiculo generada por el factory
+ */
 public class Automovil extends Vehiculo {
   private static final double cant_max_pasajeros = 4;
 
@@ -7,13 +10,31 @@ public class Automovil extends Vehiculo {
     super(nropatente, cant_max_pasajeros, true, true);
   }
 
-  protected boolean verificarCantPasajeros(Integer cantPasajeros) {
+    /**
+     * @param cantPasajeros la cantidad de pasajeros del pedido
+     * @return verifica la cantidad de pasajeros sea menor o igual a 4
+     */
+    protected boolean verificarCantPasajeros(Integer cantPasajeros) {
     return cantPasajeros <= 4;
   }
-  protected boolean verificarBaul(boolean usaBaul) { return true; }
-  protected boolean verificarPF(boolean PF) { return true; }
-  
-  protected Integer calculoPrioridad(Pedido pedido) {
+
+    /**
+     * @param usaBaul verdadero o falso dependiendo del pedido si tiene baul o no
+     * @return verifica si el valor de baul es verdadero
+     */
+    protected boolean verificarBaul(boolean usaBaul) { return true; }
+
+    /**
+     * @param PF verdadero o falso dependiendo del pedido si tiene mascocota o no
+     * @return verifica si el valor de mascota es verdadero
+     */
+    protected boolean verificarPF(boolean PF) { return true; }
+
+    /**
+     * @param pedido el pedido realziado por el cliente
+     * @return devuelve la prioridad del pedido
+     */
+    protected Integer calculoPrioridad(Pedido pedido) {
     if (pedido.getUsaBaul()) {
       return 40 * pedido.getCantPasajeros();
     }

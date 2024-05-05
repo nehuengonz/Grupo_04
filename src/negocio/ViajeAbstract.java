@@ -2,6 +2,10 @@ package negocio;
 
 import java.util.Random;
 
+/**
+ * clase abstracta del viaje esta deriba en las clases concretas de las diferentes tipos de zona que puede realizar el chofer
+ * y hay un costo adicional distinto dependiendo la zona
+ */
 public abstract class ViajeAbstract implements IViaje, Comparable<ViajeAbstract> {
     protected double costoBase = 1000;
 

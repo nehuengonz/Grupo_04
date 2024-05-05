@@ -1,6 +1,10 @@
 package negocio;
 
 
+/**
+ * patron Factory utilizado para la creacion del vehiculo,
+ * esta esta implementada en la alta de vehiculo del administrador
+ */
 public class FactoryVehiculos {
 
 	//crea un vehiculo dependiendo el tipo

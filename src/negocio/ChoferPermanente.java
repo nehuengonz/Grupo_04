@@ -3,6 +3,9 @@ package negocio;
 
 import java.time.*;
 
+/**
+ * clase concreta chofer permanente de la empresa, extiende de chofer empleado
+ */
 public class ChoferPermanente extends ChoferEmpleado{
 	
 	//tiene que ser el mismo valor para todos los choferes permanentes osea que podria un atributo estatico
@@ -32,6 +35,10 @@ public class ChoferPermanente extends ChoferEmpleado{
 	public void setFecha_ingreso(LocalDate fecha_ingreso) {
 		this.fecha_ingreso = fecha_ingreso;
 	}
+
+    /**
+     * @return el sueldo bruto del chofer
+     */
     @Override
     public double getSueldoBruto() {
         //sueldo bruto con hijos y antiguedad
@@ -44,6 +51,9 @@ public class ChoferPermanente extends ChoferEmpleado{
         return ans+ans_antiguedad +ans_hijos;
     }
 
+    /**
+     * @return el sueldo neto es decir el sueldo bruto - el porcentaje de aportes
+     */
     @Override
     public double getSueldoNeto() {
         // sueldo bruto - aportes jubilatiorios

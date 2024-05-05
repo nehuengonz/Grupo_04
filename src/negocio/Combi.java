@@ -1,5 +1,8 @@
 package negocio;
 
+/**
+ * clase concreta combi, extendida de vehiculo
+ */
 public class Combi extends Vehiculo {
   private static final double cant_max_pasajeros = 10;
 
@@ -17,7 +20,12 @@ public class Combi extends Vehiculo {
 	return !PF;
  }
  //devuelve 10* cant de pasajeros solicitados +100 si usa baul
-  protected Integer calculoPrioridad(Pedido pedido) {
+
+    /**
+     * @param pedido
+     * @return la prioridad de la combi
+     */
+    protected Integer calculoPrioridad(Pedido pedido) {
     return 10 * pedido.getCantPasajeros() + (pedido.getUsaBaul() ? 100 : 0);
   }
 

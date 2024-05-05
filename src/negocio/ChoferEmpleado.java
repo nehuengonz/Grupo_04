@@ -1,6 +1,11 @@
 package negocio;
 
 
+/**
+ * clase abstracta que extienede de chofer que a su ves es abstracta
+ * se utiliza para diferenciar a los choferes con aportes y suelo basico de la empresa
+ * es decir a los choferes permanentes y a los choferes temporarios
+ */
 public abstract class ChoferEmpleado extends Chofer{
     protected double sueldo_basico;
     protected double aportes;//aportes jubilatiorios porcentaje de 1 a 100

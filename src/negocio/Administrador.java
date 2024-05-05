@@ -16,10 +16,10 @@ public class Administrador extends Usuario {
   }
 
     /**
-     * @param username
-     * @param password
-     * @param realname
-     * @throws UsuarioRepetidoException
+     * @param username nombre de usuario del cliente
+     * @param password contrasenia del cliente
+     * @param realname nombre real del cliente
+     * @throws UsuarioRepetidoException si se repite el nombre de usuario se lanza la excepcion
      */
     public void altasCliente(String username, String password, String realname)
       throws UsuarioRepetidoException {
@@ -36,26 +36,57 @@ public class Administrador extends Usuario {
       System.err.println("Este nombre de usuario ya existe");
     }
   }
-  public void altasChoferContraatdo(String dni, String nombre, double ganancia_viaje) {
+
+    /**
+     * @param dni dni del chofer dato necesario para buscarlo en la lista de choferes
+     * @param nombre nombre del chofer
+     * @param ganancia_viaje porcentaje de ganancia que recibira un chofer por viaje realizado
+     */
+    public void altasChoferContraatdo(String dni, String nombre, double ganancia_viaje) {
 	  ChoferContratado chof=new ChoferContratado(dni,nombre,ganancia_viaje);
 	  sistema.agregaChofer(chof);
-	  
       }
-  public void altasChoferPermanente(String dni,String nombre,int sueldobasico,int aportes) {
+
+    /**
+     * @param dni
+     * @param nombre
+     * @param sueldobasico sueldo basico del chofer
+     * @param aportes   porcentaje descontado al sueldo bruto del chofer
+     */
+    public void altasChoferPermanente(String dni,String nombre,int sueldobasico,int aportes) {
 	  ChoferPermanente chof=new ChoferPermanente(dni,nombre,sueldobasico,aportes);
 	  sistema.agregaChofer(chof);
   }
-  public void altasChoferTemporario(String dni, String nombre, double sueldo_basico, double aportes) {
+
+    /**
+     * @param dni
+     * @param nombre
+     * @param sueldo_basico
+     * @param aportes
+     */
+    public void altasChoferTemporario(String dni, String nombre, double sueldo_basico, double aportes) {
 	  ChoferTemporario chof=new ChoferTemporario(dni,nombre,sueldo_basico,aportes);
 	  sistema.agregaChofer(chof);
   }
   // el tipo tiene que ser el nombre del vehiculo con la primera letra en
   // mayuscula
-  public void altasVehiculo(String tipo, String patente) {
+
+    /**
+     * @param tipo
+     * @param patente
+     */
+    public void altasVehiculo(String tipo, String patente) {
     sistema.agregarVehiculo(FactoryVehiculos.createVehiculo(tipo, patente));
   }
   //uso contains en modifica cliente
-  public void modificacionesCliente(String Nombreus,String newNombreus,String newpass,String newName) {
+
+    /**
+     * @param Nombreus nombre de usuario actual
+     * @param newNombreus nuevo nombre de usuario
+     * @param newpass nueva contrasenia
+     * @param newName nuevo nombre
+     */
+    public void modificacionesCliente(String Nombreus,String newNombreus,String newpass,String newName) {
 	  
 	  for(Cliente act:sistema.getClientes()) {
 		  if(act.nombreUs.contains(Nombreus)) {
@@ -96,15 +127,27 @@ public void ListadoClientes() {
   }
 }
 */
-  public ArrayList<Chofer> listadoChoferes() {
+
+    /**
+     * @return la lista de choferes
+     */
+    public ArrayList<Chofer> listadoChoferes() {
     ArrayList<Chofer> choferes = sistema.getChoferes();
     return choferes;
   }
-  public ArrayList<Cliente> listadoClientes() {
+
+    /**
+     * @return la lista de clientes
+     */
+    public ArrayList<Cliente> listadoClientes() {
     ArrayList<Cliente> clientes = sistema.getClientes();
     return clientes;
   }
-  public ArrayList<Vehiculo> listadoVehiculos() {
+
+    /**
+     * @return la lista de vehiculos
+     */
+    public ArrayList<Vehiculo> listadoVehiculos() {
     ArrayList<Vehiculo> vehiculos = sistema.getVehiculos();
     return vehiculos;
   }

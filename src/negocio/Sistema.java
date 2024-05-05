@@ -8,6 +8,11 @@ import java.util.List;
 /*
  * @invariant choferes, vehiculos, clientes y viajes siempre distintos de null.
  */
+/**
+ * clase que se encarga de todas las funcionalidades de la empresa, 
+ * ademas e almacenar la informacion de todos los Choferes,vehiculos,clientes y viajes
+ * es la clase principal del proyecto
+ */
 public class Sistema {
 
   private static Sistema instance;

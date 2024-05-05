@@ -2,6 +2,10 @@ package negocio;
 
 import excepciones.*;
 
+/**
+ * clase concreta de cliente extendida de usuario se encarga de la gestion y accesibilidad del cliente 
+ * en sus viajes  realizados por la empresa
+ */
 public class Cliente extends Usuario {
   private Sistema sistema;
 

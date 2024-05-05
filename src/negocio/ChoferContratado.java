@@ -1,5 +1,8 @@
 package negocio;
 
+/**
+ * clase concreta de los choferes contratados extiende de la clase chofer 
+ */
 public class ChoferContratado extends Chofer{
     protected double ganancia_viaje;
 

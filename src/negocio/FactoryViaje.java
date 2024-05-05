@@ -1,5 +1,10 @@
 package negocio;
 
+/**
+ * patron Facotory aplicado para el viaje, 
+ * este se utiliza al crear el viaje correcto cuando se realiza el pedido
+ * ademas de decorarlo con el costo del baul y el costo de llevar mascota
+ */
 public class FactoryViaje {
 	
 	  public static IViaje getViaje(Pedido pedido, Vehiculo vehiculo, Chofer chofer) throws Exception {

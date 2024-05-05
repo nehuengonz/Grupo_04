@@ -7,6 +7,9 @@ import java.time.*;
 /*
  * @invariant zona, SPF, usaBaul, fecha, cantPasajeros, cliente.
  */
+/**
+ * clase utilizada sobre la solicitud del usuario cliente
+ */
 public class Pedido implements Cloneable {
   private Zona zona;
   private boolean SPF; // service pet friendly

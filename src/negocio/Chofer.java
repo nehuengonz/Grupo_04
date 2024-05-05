@@ -1,5 +1,8 @@
 package negocio;
 
+/**
+ * clase abstracta de los choferes de la empresa
+ */
 public abstract class Chofer {
   protected String dni;
   protected String nombre;

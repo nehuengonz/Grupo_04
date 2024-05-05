@@ -1,5 +1,8 @@
 package negocio;
 
+/**
+ * clase concreta de moto que extiende de vehiculo
+ */
 public class Moto extends Vehiculo {
   private static final double cant_max_pasajeros = 1;
   public Moto(String nropatente) {

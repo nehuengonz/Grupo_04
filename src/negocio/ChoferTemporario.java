@@ -1,5 +1,8 @@
 package negocio;
 
+/**
+ * clase concreta del chofer temporario extiende de chofer empleado
+ */
 public class ChoferTemporario extends ChoferEmpleado{
 
     protected static double plus_X_cantidad_viajes=0.035;
@@ -35,11 +38,19 @@ public class ChoferTemporario extends ChoferEmpleado{
     public ChoferTemporario() {
         super();
     }
+
+    /**
+     * @return el sueldo bruto del chofer
+     */
     @Override
     public double getSueldoBruto() {
         // TODO Implement this method
         return  sueldo_basico+ sueldo_basico*(this.plus_X_cantidad_viajes*cant_viajes);
     }
+
+    /**
+     * @return el sueldo neto es decir el sueldo bruto - el porcentaje de aportes
+     */
     @Override
     public double getSueldoNeto() {
         // TODO Implement this method
