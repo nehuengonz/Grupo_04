@@ -2,6 +2,8 @@ package negocio;
 
 /**
  * clase abstracta vehiculo que obtiene los atributos comunes de todoslos tipos de vehiculos de la empresa
+ * @Invariantes:
+ * nroPatente != null
  */
 public abstract class Vehiculo {
   protected String nropatente;
@@ -10,8 +12,17 @@ public abstract class Vehiculo {
   protected boolean baul;
   protected boolean disponible;
 
+  /**
+   * @Precondiciones
+   * nropatente != null
+   * @param nropatente
+   * @param cant_max_pasajeros
+   * @param PF
+   * @param baul
+   */
   public Vehiculo(String nropatente, double cant_max_pasajeros, boolean PF,
                   boolean baul) {
+    assert nropatente != null;
     this.nropatente = nropatente;
     this.cant_max_pasajeros = cant_max_pasajeros;
     this.PF = PF;
@@ -33,7 +44,14 @@ public abstract class Vehiculo {
   abstract protected boolean verificarPF(boolean PF);
   abstract protected Integer calculoPrioridad(Pedido pedido);
 
-  public void setNropatente(String nropatente) { this.nropatente = nropatente; }
+  /**
+   * @Precondiciones:
+   * nropatente != null
+   * @param nropatente
+   */
+  public void setNropatente(String nropatente) {
+    assert nropatente != null;
+    this.nropatente = nropatente; }
 
   public String getNropatente() { return nropatente; }
 
