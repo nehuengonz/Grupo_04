@@ -2,6 +2,7 @@ package negocio;
 
 import excepciones.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -218,7 +219,14 @@ public class Sistema {
 	  }
 	  return ans;
   }
-  
+  public void Muestrasalariomensual(Administrador admin,LocalDate date) {
+	  
+	  for(Chofer act:choferes) {
+		  System.out.print("nombre: "+act.getNombre() +" dni: "+act.getDni());
+		  System.out.println(" salario mensual "+admin.salarioMensual(act, date));
+	  }
+  }
+ 
   
   public String toStringChoferes() {
     return "Sistema [choferes=" + choferes + "]";
