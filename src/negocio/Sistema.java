@@ -69,7 +69,6 @@ public class Sistema {
         throw new PedidoInvalidoException();
       throw new SinVehiculosDisponiblesException();
     }
-    vehiculo.setDisponible(false);
 
     Chofer chofer = getChoferDisponible();
     if(chofer == null) {

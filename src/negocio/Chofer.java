@@ -34,12 +34,4 @@ public abstract class Chofer {
   public String toString() {
     return "Chofer [dni=" + dni + ", nombre=" + nombre + "]";
   }
-
-  public boolean isDisponible() {
-        return !ocupado;
-    }
-
-  public void setDisponible(boolean disponible) {
-        this.ocupado = !disponible;
-    }
 }
