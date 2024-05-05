@@ -9,7 +9,7 @@ import java.util.List;
  * Clase que se encarga de todas las funcionalidades de la empresa,
  * ademas e almacenar la informacion de todos los Choferes,vehiculos,clientes y viajes
  * es la clase principal del proyecto
- * Invariantes:
+ * @Invariantes:
  * choferes, vehiculos, clientes y viajes siempre distintos de null.
  */
 public class Sistema {
@@ -54,9 +54,9 @@ public class Sistema {
    * Finalmente se asigna un chofer al viaje. Si no hay choferes disponibles,
    * lanza SinChoferDisponibleException. En cambio, si hay un chofer disponible,
    * se asigna y el viaje pasa a 'iniciado'.
-   * Precondiciones:
+   * @Precondiciones:
    * pedido != null
-   * Invariantes:
+   * @Invariantes:
    * pedido pasado como parámetro no se modifica.
    * @param pedido
    * @throws Exception
@@ -84,9 +84,9 @@ public class Sistema {
   }
 
   /**
-   * Precondiciones:
+   * @Precondiciones:
    * pedido != null
-   * Invariantes:
+   * @Invariantes:
    * El pedido pasado como parámetro no se modifica.
    * @param pedido
    * @return
@@ -99,9 +99,9 @@ public class Sistema {
   }
 
   /**
-   * Precondiciones:
+   * @Precondiciones:
    * pedido != null
-   * Postcondiciones:
+   * @Postcondiciones:
    * Retorna SinVehiculosDisponiblesException si todos los vehiculos pasados son null.
    * Si no retorna el vehiculo con mayor prioridad de los 3 (puede ser null si ninguno de los vehiculos era apto para el pedido)
    * @param pedido
@@ -138,15 +138,22 @@ public class Sistema {
 
   public void guardarCalificacionChofer() {}
 
+  /**
+   * @Precondiciones:
+   * viaje != null
+   * @param viaje
+   */
   public void registrarViajeFinalizado(ViajeAbstract viaje) {
+    assert viaje != null;
     viajes.add(viaje);
     choferes.remove(viaje.getChofer());
     choferes.add(viaje.getChofer());
   }
 
-  /*
-   * Si encuentra una combi disponible la retorna.
-   * Si no devuelve null.
+  /**
+   * @Postcondiciones:
+   * Retorna instancia de Combi si encuentra una disponible, si no null.
+   * @return
    */
   private Combi getCombiDisponible() {
     for (Vehiculo v : vehiculos) {
@@ -155,6 +162,11 @@ public class Sistema {
     }
     return null;
   }
+  /**
+   * @Postcondiciones:
+   * Retorna instancia de Automovil si encuentra uno disponible, si no null.
+   * @return
+   */
   private Automovil getAutomovilDisponible() {
     for (Vehiculo v : vehiculos) {
       if (v.isDisponible() && v instanceof Automovil)
@@ -162,6 +174,11 @@ public class Sistema {
     }
     return null;
   }
+  /**
+   * @Postcondiciones:
+   * Retorna instancia de Moto si encuentra una disponible, si no null.
+   * @return
+   */
   private Moto getMotoDisponible() {
     for (Vehiculo v : vehiculos) {
       if (v.isDisponible() && v instanceof Moto) 
@@ -169,6 +186,11 @@ public class Sistema {
     }
     return null;
   }
+  /**
+   * @Postcondiciones:
+   * Retorna instancia de Chofer si encuentra uno disponible, si no null.
+   * @return
+   */
   private Chofer getChoferDisponible() {
     for (Chofer c : choferes) {
       if (!c.getOcupado())
@@ -187,6 +209,15 @@ public class Sistema {
   public void agregaViaje(IViaje viaje) { viajes.add(viaje); }
   public void sacaViaje(IViaje viaje) { viajes.remove(viaje); }
 
+  /**
+   * @Postcondiciones:
+   * Retorna un ArrayList ordenado de mayor a menor por costo de los viajes.
+   * @Invariantes:
+   * No se modifica el ArrayList original (viajes).
+   * * @Invariantes:*
+   No se modifica el ArrayList original (viajes).
+   * @return
+   */
   public ArrayList<ViajeAbstract> listadoViajes() {
     ArrayList<ViajeAbstract> clonViajes = new ArrayList<>();
     for(IViaje viaje : viajes)
