@@ -3,6 +3,10 @@ package negocio;
 import excepciones.UsuarioRepetidoException;
 import java.util.ArrayList;
 
+/**
+ * se encarga de la gention del sistema, tanto de los choferes,vehiculos,clientes y viajes
+ * 
+ */
 public class Administrador extends Usuario {
   private Sistema sistema;
 
@@ -10,7 +14,14 @@ public class Administrador extends Usuario {
     super(nombreUs, contrasenia, nombreReal);
     sistema = Sistema.getInstance();
   }
-  public void altasCliente(String username, String password, String realname)
+
+    /**
+     * @param username
+     * @param password
+     * @param realname
+     * @throws UsuarioRepetidoException
+     */
+    public void altasCliente(String username, String password, String realname)
       throws UsuarioRepetidoException {
     ArrayList<Cliente> clientes = sistema.getClientes();
     Cliente c = new Cliente(username, password, realname);
@@ -25,7 +36,19 @@ public class Administrador extends Usuario {
       System.err.println("Este nombre de usuario ya existe");
     }
   }
-  public void altasChofer() {}
+  public void altasChoferContraatdo(String dni, String nombre, double ganancia_viaje) {
+	  ChoferContratado chof=new ChoferContratado(dni,nombre,ganancia_viaje);
+	  sistema.agregaChofer(chof);
+	  
+      }
+  public void altasChoferPermanente(String dni,String nombre,int sueldobasico,int aportes) {
+	  ChoferPermanente chof=new ChoferPermanente(dni,nombre,sueldobasico,aportes);
+	  sistema.agregaChofer(chof);
+  }
+  public void altasChoferTemporario(String dni, String nombre, double sueldo_basico, double aportes) {
+	  ChoferTemporario chof=new ChoferTemporario(dni,nombre,sueldo_basico,aportes);
+	  sistema.agregaChofer(chof);
+  }
   // el tipo tiene que ser el nombre del vehiculo con la primera letra en
   // mayuscula
   public void altasVehiculo(String tipo, String patente) {
