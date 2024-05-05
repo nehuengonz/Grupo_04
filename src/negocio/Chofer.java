@@ -43,9 +43,9 @@ public abstract class Chofer {
   public boolean getOcupado() { return ocupado; }
   public void setOcupado(boolean value) { ocupado = value; }
 
+
   public abstract double getSueldoBruto();
   public abstract double getSueldoNeto();
-
   @Override
   public String toString() {
     return "Chofer [dni=" + dni + ", nombre=" + nombre + "]";

@@ -8,12 +8,12 @@ public class Test {
 
   public static void main(String[] args) {
     Sistema SYS = Sistema.getInstance();
-    ChoferContratado Chofer1 = new ChoferContratado("123456", "juan", 2000);
-    ChoferContratado Chofer2 = new ChoferContratado("333333", "pablo", 12000);
-    ChoferContratado Chofer3 = new ChoferContratado("111111", "pedro", 67000);
-    ChoferContratado Chofer4 = new ChoferContratado("999999", "yo", 1000);
+    ChoferContratado Chofer1 = new ChoferContratado("123456", "juan", 40);
+    ChoferContratado Chofer2 = new ChoferContratado("333333", "pablo", 40);
+    ChoferContratado Chofer3 = new ChoferContratado("111111", "pedro", 40);
+    ChoferContratado Chofer4 = new ChoferContratado("999999", "solari", 40);
     ChoferPermanente chofer5=new ChoferPermanente("123124","persona1",100000,20);
-    ChoferTemporario chofer6=new ChoferTemporario("999999", "yo", 100000,20);
+    ChoferTemporario chofer6=new ChoferTemporario("666666", "yo", 100000,20);
     
     LocalDate l5=LocalDate.of(2000, 03, 3);
     chofer5.setFecha_ingreso(l5);
@@ -71,8 +71,9 @@ public class Test {
     admin.listadoClientes();
 
     LocalDateTime d22=LocalDateTime.now();
-    
-    
+    LocalDate d11=LocalDate.now();
+    System.out.println("dinero necesario = "+admin.dineroNecesario(d11));
+   
     try {
       c1.solicitaViaje(new Pedido(Zona.ESTANDAR, true, true, d22,
                                   2)); // con mascota
@@ -80,7 +81,28 @@ public class Test {
                                   d22, 7)); // con equipaje
       c1.solicitaViaje(
           new Pedido(Zona.PELIGROSA, false, false, d22, 3));
-      
+      c1.solicitaViaje(
+              new Pedido(Zona.SIN_ASFALTAR, false, false, d22, 3));
+      c1.solicitaViaje(
+              new Pedido(Zona.ESTANDAR, false, true, d22, 3));
+      c1.solicitaViaje(
+              new Pedido(Zona.ESTANDAR, true, false, d22, 3));
+      c1.solicitaViaje(
+              new Pedido(Zona.ESTANDAR, true, true, d22, 3));
+      Random random = new Random();
+	  Zona aux =Zona.ESTANDAR;
+      for(int i=0;i<40;i++) {
+    	  switch(i%3) {
+    	  case 0:
+			  aux=Zona.ESTANDAR;
+		  case 1:
+			  aux=Zona.PELIGROSA;
+		  default:
+			  aux=Zona.SIN_ASFALTAR;
+    	  }
+    	  c1.solicitaViaje(
+                  new Pedido(aux, random.nextBoolean(), random.nextBoolean(), d22, random.nextInt(11)));
+      }
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -91,10 +113,15 @@ public class Test {
     } catch (Exception e) {
 
     }
-    ArrayList<ViajeAbstract> listaViajes = SYS.listadoViajes();
-    for(ViajeAbstract viaje : listaViajes)
+    
+    for(ViajeAbstract viaje : SYS.getViajes())
       System.out.println(viaje.getCosto());
-
+   
+    //salario mensual
+    Month date1=LocalDate.now().getMonth();
+    
+    System.out.println(" ganancia mensual de cada chofer");
+    SYS.Muestrasalariomensual(admin, d11);
 	
     // que tendriamos que contemplar en solicitud incoerente??? por que los
     // datos se pasan por constructor o no?

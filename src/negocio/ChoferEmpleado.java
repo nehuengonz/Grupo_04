@@ -24,6 +24,7 @@ public abstract class ChoferEmpleado extends Chofer{
 	     this.aportes = aportes;
 	}
 
+  
 
 	public double getSueldo_basico() {
         return sueldo_basico;

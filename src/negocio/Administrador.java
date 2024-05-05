@@ -1,6 +1,8 @@
 package negocio;
 
 import excepciones.UsuarioRepetidoException;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -164,9 +166,33 @@ public class Administrador extends Usuario {
         act.setNropatente(newpatente);
     }
   }
-  public void consultasCliente() {}
-  public void consultasChofer() {}
-  public void consultasVehiculo() {}
+  public Cliente consultasCliente(String usuario) {
+	  Cliente res=null;
+	  for(Cliente act:sistema.getClientes()) {
+		  if(act.getNombreUs().contains(usuario)) {
+			  res=act;
+		  }
+	  }
+	  return res;
+  }
+  public Chofer consultasChofer(String dni) {
+	  Chofer res=null;
+	  for(Chofer act:sistema.getChoferes()) {
+		  if(act.getDni().contains(dni)) {
+			  res=act;
+		  }
+	  }
+	  return res;
+  }
+  public Vehiculo consultasVehiculo(String patente) {
+	  Vehiculo res=null;
+	  for(Vehiculo act:sistema.getVehiculos()) {
+		  if(act.getNropatente().contains(patente)) {
+			  res=act;
+		  }
+	  }
+	  return res;
+  }
 
   /**
    * @return la lista de choferes
@@ -194,6 +220,37 @@ public class Administrador extends Usuario {
   public ArrayList<ViajeAbstract> listadoViajes() {
     return sistema.listadoViajes();
   }
-  public void salarioMensual() {}
-  public void dineroNecesario() {}
+  public double salarioMensual(Chofer chofer,LocalDate date) {
+	  double salario_mensual=0;
+		  if ( chofer instanceof ChoferPermanente) {
+			  salario_mensual=chofer.getSueldoBruto();  
+			  }
+			  else if (chofer instanceof ChoferTemporario) {
+				  ChoferTemporario t=(ChoferTemporario)chofer;
+				  t.setCant_viajes(date);
+				  salario_mensual=t.getSueldoBruto();
+			  }else if (chofer instanceof ChoferContratado) {
+					  ChoferContratado c=(ChoferContratado) chofer;
+					  salario_mensual= c.getSueldoBruto(date);
+				  }
+	  return salario_mensual;
+  }
+  
+  public double dineroNecesario(LocalDate date) {
+	  double totcash=0;
+	  for(Chofer act:sistema.getChoferes()) {
+		  if ( act instanceof ChoferPermanente) {
+			totcash+=act.getSueldoBruto();  
+		  }
+		  else if (act instanceof ChoferTemporario) {
+			  ChoferTemporario t=(ChoferTemporario)act;
+			  t.setCant_viajes(date);
+			  totcash+=t.getSueldoBruto();
+		  }else if (act instanceof ChoferContratado) {
+				  ChoferContratado c=(ChoferContratado) act;
+					  totcash+= c.getSueldoBruto(date);
+			  }
+		  }
+	  return totcash;
+  }
 }
