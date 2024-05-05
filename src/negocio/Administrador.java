@@ -29,7 +29,7 @@ public class Administrador extends Usuario {
   // el tipo tiene que ser el nombre del vehiculo con la primera letra en
   // mayuscula
   public void altasVehiculo(String tipo, String patente) {
-    sistema.agregarVehiculo(factoryVehiculos.createVehiculo(tipo, patente));
+    sistema.agregarVehiculo(FactoryVehiculos.createVehiculo(tipo, patente));
   }
   //uso contains en modifica cliente
   public void modificacionesCliente(String Nombreus,String newNombreus,String newpass,String newName) {
@@ -73,19 +73,19 @@ public void ListadoClientes() {
   }
 }
 */
-  public ArrayList<Chofer> ListadoChoferes() {
+  public ArrayList<Chofer> listadoChoferes() {
     ArrayList<Chofer> choferes = sistema.getChoferes();
     return choferes;
   }
-  public ArrayList<Cliente> ListadoClientes() {
+  public ArrayList<Cliente> listadoClientes() {
     ArrayList<Cliente> clientes = sistema.getClientes();
     return clientes;
   }
-  public ArrayList<Vehiculo> ListadoVehiculos() {
+  public ArrayList<Vehiculo> listadoVehiculos() {
     ArrayList<Vehiculo> vehiculos = sistema.getVehiculos();
     return vehiculos;
   }
-  public void ListadoViajes() {}
-  public void SalarioMensual() {}
-  public void Dineronecesario() {}
+  public void listadoViajes() {}
+  public void salarioMensual() {}
+  public void dineroNecesario() {}
 }

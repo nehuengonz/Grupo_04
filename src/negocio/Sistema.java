@@ -156,29 +156,14 @@ public class Sistema {
   public void agregaViaje(IViaje viaje) { viajes.add(viaje); }
   public void sacaViaje(IViaje viaje) { viajes.remove(viaje); }
 
-  // Listados
-  public void listadoClientes() {
-    for(Cliente cliente : clientes)
-      System.out.println(cliente);
-  }
-  public void listadoChoferes() {
-    for(Chofer chofer : choferes)
-      System.out.println(chofer);
-  }
-  public void listadoVehiculos() {
-    for(Vehiculo vehiculo : vehiculos)
-      System.out.println(vehiculo);
-  }
-  public void listadoViajes() {
+  public ArrayList<ViajeAbstract> listadoViajes() {
     ArrayList<ViajeAbstract> clonViajes = new ArrayList<>();
     for(IViaje viaje : viajes)
       clonViajes.add((ViajeAbstract)viaje);
     quicksort(clonViajes, 0, clonViajes.size() - 1);
-    for(ViajeAbstract viaje : clonViajes)
-      System.out.println(viaje);
+    return clonViajes;
   }
-
-  public void quicksort(ArrayList<ViajeAbstract> array, int begin, int end) {
+  private void quicksort(ArrayList<ViajeAbstract> array, int begin, int end) {
     if(begin >= end) return;
 
     int partitionIndex = partition(array, begin, end);

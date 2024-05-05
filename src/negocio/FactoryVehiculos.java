@@ -1,7 +1,7 @@
 package negocio;
 
 
-public class factoryVehiculos {
+public class FactoryVehiculos {
 
 	//crea un vehiculo dependiendo el tipo
 	public static Vehiculo createVehiculo(String tipo,String patente){
