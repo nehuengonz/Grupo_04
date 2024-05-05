@@ -3,8 +3,9 @@ package negocio;
 import java.util.Random;
 
 /**
- * clase abstracta del viaje esta deriba en las clases concretas de las diferentes tipos de zona que puede realizar el chofer
+ * clase abstracta del viaje esta deriva en las clases concretas de los diferentes tipos de zona que puede realizar el chofer
  * y hay un costo adicional distinto dependiendo la zona
+ * Se puede decorar con un ViajeDecorator (ViajeConBaul, ViajeConMascota)
  */
 public abstract class ViajeAbstract implements IViaje, Comparable<ViajeAbstract> {
     protected double costoBase = 1000;
@@ -23,11 +24,6 @@ public abstract class ViajeAbstract implements IViaje, Comparable<ViajeAbstract>
         this.vehiculo = vehiculo;
         Random random = new Random();
         distanciaRecorridaEnKm = random.nextInt(40);
-    }
-
-    //crear clases viaje a zona peligrosa/viaje calle sin asfaltar/viaje estandar
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
     }
 
     public Pedido getPedido() {

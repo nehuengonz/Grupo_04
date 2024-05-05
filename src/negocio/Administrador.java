@@ -81,63 +81,74 @@ public class Administrador extends Usuario {
   //uso contains en modifica cliente
 
     /**
-     * @param Nombreus nombre de usuario actual
-     * @param newNombreus nuevo nombre de usuario
-     * @param newpass nueva contrasenia
+     * @Precondiciones:
+     * nombreUs, newNombreUs, newPass, newName != null
+     * @Postcondiciones:
+     * nombreUs, contrasenia y nombreReal cambiados a los pasaedos por parámetro
+     * @param nombreUs nombre de usuario actual
+     * @param newNombreUs nuevo nombre de usuario
+     * @param newPass nueva contrasenia
      * @param newName nuevo nombre
      */
-    public void modificacionesCliente(String Nombreus,String newNombreus,String newpass,String newName) {
-	  
-	  for(Cliente act:sistema.getClientes()) {
-		  if(act.nombreUs.contains(Nombreus)) {
-			  act.setNombreUs(newNombreus);
-			  act.setContrasenia(newpass);
-			  act.setNombreReal(newName);
-			  System.out.println("datos de cliente cambiados con exito!!!");
-		  }
-	  }
-  }
-  public void modificacionesChofer(String dni, String newdni,String nombre) {
-      for(Chofer act:sistema.getChoferes()) {
-    	  if(act.getDni().contains(dni)) {
-    		  act.setDni(newdni);
-    		  act.setNombre(nombre);
-    	  }
+    public void modificarCliente(String nombreUs, String newNombreUs, String newPass, String newName) {
+      assert nombreUs != null && newNombreUs != null && newPass != null && newName != null;
+      ArrayList<Cliente> clientes = sistema.getClientes();
+      int i = 0;
+      while(i < clientes.size() && !clientes.get(i).getNombreUs().equals(nombreUs))
+        i++;
+      if(i < clientes.size()) {
+        Cliente act = clientes.get(i);
+        act.setNombreUs(newNombreUs);
+        act.setContrasenia(newPass);
+        act.setNombreReal(newName);
       }
-  } 
-  public void modificacionesVehiculo(String nropatente,String newpatente) {
-	  for (Vehiculo act:sistema.getVehiculos()) {
-		  if(act.getNropatente().contains(nropatente)) {
-			  act.setNropatente(newpatente);
-		  }
-	  }
+  }
+
+    /**
+     * @Precondiciones:
+     * dni, newdni, nombre != null
+     * @Postcondiciones:
+     * dni y nombre de chofer cambiados a los pasados por parámetro.
+     * @param dni
+     * @param newdni
+     * @param nombre
+     */
+  public void modificarChofer(String dni, String newdni,String nombre) {
+      assert dni != null && newdni != null && nombre != null;
+      ArrayList<Chofer> choferes = sistema.getChoferes();
+      int i = 0;
+      while( i < choferes.size() && !choferes.get(i).getDni().equals(dni))
+        i++;
+      if(i < choferes.size()) {
+        Chofer act = choferes.get(i);
+        act.setDni(newdni);
+        act.setNombre(nombre);
+      }
+  }
+
+    /**
+     * @Precondiciones:
+     * nropatente, newpatente != null
+     * @Postcondiciones:
+     * Si existe un vehiculo con ese nroPatente, nroPatente se cambia al pasado por parámetro.
+     * Si no, no se cambia nada.
+     * @param nropatente
+     * @param newpatente
+     */
+  public void modificarVehiculo(String nropatente,String newpatente) {
+      assert nropatente != null && newpatente != null;
+      ArrayList<Vehiculo> vehiculos = sistema.getVehiculos();
+      int i = 0;
+      while(i < vehiculos.size() && !vehiculos.get(i).getNropatente().equals(nropatente))
+          i++;
+      if(i < vehiculos.size()) {
+          Vehiculo act = vehiculos.get(i);
+          act.setNropatente(newpatente);
+      }
   }
   public void consultasCliente() {}
   public void consultasChofer() {}
   public void consultasVehiculo() {}
-  /*
-   * listadochoferes se refiere a pasar la array list al administrador no
-mostrarla public void ListadoChoferes(){ ArrayList<Chofer>
-choferes=sistema.getChoferes(); for (Chofer chofer : choferes) {
-          // Imprimir cada Chofer en una nueva línea
-      System.out.println(chofer.toString());
-  }
-}
-
-public void ListadoVehiculos(){
-  ArrayList<Vehiculo> vehiculos=sistema.getVehiculos();
-  for (Vehiculo vehi: vehiculos) {
-          System.out.println(vehi.toString());
-  }
-}
-
-public void ListadoClientes() {
-  ArrayList<Cliente> clientes=sistema.getClientes();
-  for(Cliente cli:clientes) {
-          System.out.println(cli.toString());
-  }
-}
-*/
 
     /**
      * @return la lista de choferes

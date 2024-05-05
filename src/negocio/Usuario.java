@@ -1,7 +1,7 @@
 package negocio;
 
 /**
- * cse bstracta usuario que obtiene los atributos comunes de Administrador y Cliente
+ * clase astracta usuario que tiene los atributos comunes de Administrador y Cliente
  */
 public abstract class Usuario {
   protected String nombreUs;
@@ -32,7 +32,7 @@ public abstract class Usuario {
         this.nombreReal = nombreReal;
 }
 
-  @Override
+@Override
   public String toString() {
     return "{ nombre de usuario: " + nombreUs + ", contraseña: " + contrasenia + ", nombre real:" + nombreReal + " }";
   }

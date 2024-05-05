@@ -214,8 +214,6 @@ public class Sistema {
    * Retorna un ArrayList ordenado de mayor a menor por costo de los viajes.
    * @Invariantes:
    * No se modifica el ArrayList original (viajes).
-   * * @Invariantes:*
-   No se modifica el ArrayList original (viajes).
    * @return
    */
   public ArrayList<ViajeAbstract> listadoViajes() {
