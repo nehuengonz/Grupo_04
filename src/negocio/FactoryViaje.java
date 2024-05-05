@@ -7,7 +7,7 @@ package negocio;
  */
 public class FactoryViaje {
 	
-	  public static IViaje getViaje(Pedido pedido, Vehiculo vehiculo, Chofer chofer) throws Exception {
+	  public static IViaje getViaje(Pedido pedido, Vehiculo vehiculo, Chofer chofer) {
 		  	ViajeAbstract respuesta = null;
 		  	ViajeAbstract encapsulado = null;
 		    //si la zona esta contemplada
@@ -28,15 +28,15 @@ public class FactoryViaje {
 		    return respuesta;
 		}
 
-		public static ViajeAbstract fromZona(Pedido pedido, Vehiculo vehiculo, Chofer chofer ) throws Exception {
+		public static ViajeAbstract fromZona(Pedido pedido, Vehiculo vehiculo, Chofer chofer ) {
 		  switch(pedido.getZona()) {
 			  case ESTANDAR:
 				  return new ViajeEstandar(pedido, vehiculo, chofer);
 			  case PELIGROSA:
 				  return new ViajeZonaPeligrosa(pedido, vehiculo, chofer);
 			  case SIN_ASFALTAR:
+			  default:
 				  return new ViajeCalleSinAsfaltar(pedido, vehiculo, chofer);
-			  default: throw new Exception("Zona inesperada");
 		  }
 		}
 }
