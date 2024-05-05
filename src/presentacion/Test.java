@@ -68,7 +68,7 @@ public class Test {
     	System.out.println(v.toString());
     }
     // listar clientes devuelve la arraylist de clientes
-    admin.ListadoClientes();
+    admin.listadoClientes();
 
     LocalDateTime d22=LocalDateTime.now();
     
