@@ -2,6 +2,8 @@ package negocio;
 
 /**
  * clase astracta usuario que tiene los atributos comunes de Administrador y Cliente
+ * @Invariantes:
+ * nombreUs, contrasenia y nombreReal != null
  */
 public abstract class Usuario {
   protected String nombreUs;
@@ -20,19 +22,37 @@ public abstract class Usuario {
 
   public String getNombreReal() { return nombreReal; }
 
+  /**
+   * @Precondiciones:
+   * nombreUs != null
+   * @param nombreUs
+   */
   public void setNombreUs(String nombreUs) {
-      this.nombreUs = nombreUs;
+    assert nombreUs != null;
+    this.nombreUs = nombreUs;
   }
 
+  /**
+   * @Precondiciones:
+   * contrasenia != null
+   * @param contrasenia
+   */
   public void setContrasenia(String contrasenia) {
-      this.contrasenia = contrasenia;
+    assert contrasenia != null;
+    this.contrasenia = contrasenia;
   }
 
+  /**
+   * @Precondiciones:
+   * nombreReal != null
+   * @param nombreReal
+   */
   public void setNombreReal(String nombreReal) {
-        this.nombreReal = nombreReal;
-}
+    assert nombreReal != null;
+    this.nombreReal = nombreReal;
+  }
 
-@Override
+  @Override
   public String toString() {
     return "{ nombre de usuario: " + nombreUs + ", contraseña: " + contrasenia + ", nombre real:" + nombreReal + " }";
   }
