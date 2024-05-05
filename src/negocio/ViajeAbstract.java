@@ -8,6 +8,7 @@ import java.util.Random;
  */
 public abstract class ViajeAbstract implements IViaje, Comparable<ViajeAbstract> {
     protected double costoBase = 1000;
+    protected double distanciaRecorridaEnKm;
 
     protected Pedido pedido;
     protected Chofer chofer;
@@ -20,6 +21,8 @@ public abstract class ViajeAbstract implements IViaje, Comparable<ViajeAbstract>
         this.pedido = pedido;
         this.chofer = chofer;
         this.vehiculo = vehiculo;
+        Random random = new Random();
+        distanciaRecorridaEnKm = random.nextInt(40);
     }
 
     //crear clases viaje a zona peligrosa/viaje calle sin asfaltar/viaje estandar
@@ -45,8 +48,7 @@ public abstract class ViajeAbstract implements IViaje, Comparable<ViajeAbstract>
     }
 
     public double getDistanciaRecorridaEnKm(){
-        Random random = new Random();
-        return random.nextInt(40);
+        return distanciaRecorridaEnKm;
     }
 
     @Override

@@ -85,6 +85,16 @@ public class Test {
       System.out.println(e.getMessage());
     }
 
+    try {
+      SYS.agregarVehiculo(new Combi("123"));
+      SYS.procesarPedido(new Pedido(Zona.PELIGROSA, false, true, 10));
+    } catch (Exception e) {
+
+    }
+    ArrayList<ViajeAbstract> listaViajes = SYS.listadoViajes();
+    for(ViajeAbstract viaje : listaViajes)
+      System.out.println(viaje.getCosto());
+
 	
     // que tendriamos que contemplar en solicitud incoerente??? por que los
     // datos se pasan por constructor o no?

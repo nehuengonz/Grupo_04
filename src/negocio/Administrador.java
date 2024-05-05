@@ -162,7 +162,9 @@ public void ListadoClientes() {
     ArrayList<Vehiculo> vehiculos = sistema.getVehiculos();
     return vehiculos;
   }
-  public void listadoViajes() {}
+  public ArrayList<ViajeAbstract> listadoViajes() {
+    return sistema.listadoViajes();
+  }
   public void salarioMensual() {}
   public void dineroNecesario() {}
 }
