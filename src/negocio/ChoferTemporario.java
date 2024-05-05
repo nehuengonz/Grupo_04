@@ -1,10 +1,12 @@
 package negocio;
 
+import java.time.LocalDate;
+
 /**
  * clase concreta del chofer temporario extiende de chofer empleado
  */
 public class ChoferTemporario extends ChoferEmpleado{
-
+	Sistema sistema=Sistema.getInstance();
     protected static double plus_X_cantidad_viajes=0.035;
     protected double cant_viajes;
     
@@ -24,9 +26,17 @@ public class ChoferTemporario extends ChoferEmpleado{
 		return cant_viajes;
 	}
 
-	public void setCant_viajes(double cant_viajes) {
-		this.cant_viajes = cant_viajes;
+	public void setCant_viajes(LocalDate date) {
+		int cant=0;
+		  for(ViajeAbstract act:sistema.getViajes() ) {
+	    	   //comparo si es el mismo chofer y el mismo mes
+	    	   if (this== act.getChofer() && date.getMonthValue()== act.getPedido().getFecha().getMonthValue()) {
+	    		   cant++;
+	    	   }
+	       }
+		  this.cant_viajes=cant;
 	}
+	
 
 	public ChoferTemporario(double sueldo_basico, double aportes) {
         super();

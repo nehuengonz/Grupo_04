@@ -1,11 +1,14 @@
 package negocio;
 
+import java.time.LocalDate;
+
 /**
  * clase concreta de los choferes contratados extiende de la clase chofer 
  */
 public class ChoferContratado extends Chofer{
+	Sistema sistema=Sistema.getInstance();
     protected double ganancia_viaje;
-
+    
 
     
     public ChoferContratado(String dni, String nombre, double ganancia_viaje) {
@@ -24,21 +27,32 @@ public class ChoferContratado extends Chofer{
         return ganancia_viaje;
     }
 
-
-    @Override
-    public double getSueldoBruto() {
-        // TODO Implement this method
-        return 0.0;
+    public double getSueldoBruto(LocalDate date) {
+    	double sueldo=0;
+       for(ViajeAbstract act:sistema.getViajes() ) {
+    	   //comparo si es el mismo chofer y el mismo mes
+    	   if (this== act.getChofer() && date.getMonthValue()== act.getPedido().getFecha().getMonthValue()) {
+    		   sueldo=act.getCosto()*ganancia_viaje;
+    	   }
+       }
+        return sueldo;
     }
 
     @Override
-    public double getSueldoNeto() {
-        // TODO Implement this method
-        return 0.0;
-    }
+	public double getSueldoNeto() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getSueldoBruto() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	@Override
 	public String toString() {
 		return "ChoferContratado [ganancia_viaje=" + ganancia_viaje + ", dni=" + dni + ", nombre=" + nombre + "]";
 	}
+	
     
 }

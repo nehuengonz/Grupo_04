@@ -1,6 +1,8 @@
 package negocio;
 
 import excepciones.UsuarioRepetidoException;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -165,6 +167,27 @@ public void ListadoClientes() {
   public ArrayList<ViajeAbstract> listadoViajes() {
     return sistema.listadoViajes();
   }
-  public void salarioMensual() {}
-  public void dineroNecesario() {}
+  public void salarioMensual(Chofer chof,LocalDate date) {
+	  double salario_mensual=0;
+	  
+  }
+  
+  public double dineroNecesario(LocalDate date) {
+	  double totcash=0;
+	  for(Chofer act:sistema.getChoferes()) {
+		  if ( act instanceof ChoferPermanente) {
+			totcash+=act.getSueldoBruto();  
+		  }
+		  else if (act instanceof ChoferTemporario) {
+			  ChoferTemporario t=(ChoferTemporario)act;
+		  }else if (act instanceof ChoferContratado) {
+				  ChoferContratado c=(ChoferContratado) act;
+				  if(date.getMonthValue() == date.getMonthValue())
+				  {
+					  totcash+= c.getSueldoBruto(date);
+				  }
+			  }
+		  }
+	  return totcash;
+  }
 }

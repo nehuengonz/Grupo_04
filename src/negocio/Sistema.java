@@ -19,7 +19,7 @@ public class Sistema {
   private ArrayList<Chofer> choferes = new ArrayList<>();
   private ArrayList<Vehiculo> vehiculos = new ArrayList<>();
   private ArrayList<Cliente> clientes = new ArrayList<>();
-  private ArrayList<IViaje> viajes = new ArrayList<>();
+  private ArrayList<ViajeAbstract> viajes = new ArrayList<>();
 
   private Sistema() {
     // privado por el patron Singleton
@@ -42,7 +42,7 @@ public class Sistema {
 
   public ArrayList<Cliente> getClientes() { return clientes; }
 
-  public ArrayList<IViaje> getViajes() { return viajes; }
+  public ArrayList<ViajeAbstract> getViajes() { return viajes; }
 
   // metodos del sistema
   /**
@@ -75,7 +75,13 @@ public class Sistema {
       throw new SinChoferDisponibleException();
     }
 
-    IViaje viaje = FactoryViaje.getViaje(pedido, vehiculo, chofer);
+    ViajeAbstract viaje=null;
+	try {
+		viaje = FactoryViaje.getViaje(pedido, vehiculo, chofer);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     viajes.add(viaje);
   }
 
@@ -157,7 +163,7 @@ public class Sistema {
   public void sacaChofer(Chofer chofer) { choferes.remove(chofer); }
   public void agregaCliente(Cliente cliente) { clientes.add(cliente); }
   public void sacaCliente(Cliente cliente) { clientes.remove(cliente); }
-  public void agregaViaje(IViaje viaje) { viajes.add(viaje); }
+  public void agregaViaje(ViajeAbstract viaje) { viajes.add(viaje); }
   public void sacaViaje(IViaje viaje) { viajes.remove(viaje); }
 
   public ArrayList<ViajeAbstract> listadoViajes() {
@@ -212,6 +218,8 @@ public class Sistema {
 	  }
 	  return ans;
   }
+  
+  
   public String toStringChoferes() {
     return "Sistema [choferes=" + choferes + "]";
   }

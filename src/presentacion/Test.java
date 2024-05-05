@@ -95,6 +95,9 @@ public class Test {
     for(ViajeAbstract viaje : listaViajes)
       System.out.println(viaje.getCosto());
 
+    //salario mensual
+    Month date1=LocalDate.now().getMonth();
+    
 	
     // que tendriamos que contemplar en solicitud incoerente??? por que los
     // datos se pasan por constructor o no?
