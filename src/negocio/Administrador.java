@@ -98,9 +98,20 @@ public class Administrador extends Usuario {
 	  }
   }
   public void modificacionesChofer(String dni, String newdni,String nombre) {
-	  
+      for(Chofer act:sistema.getChoferes()) {
+    	  if(act.getDni().contains(dni)) {
+    		  act.setDni(newdni);
+    		  act.setNombre(nombre);
+    	  }
+      }
   } 
-  public void modificacionesVehiculo() {}
+  public void modificacionesVehiculo(String nropatente,String newpatente) {
+	  for (Vehiculo act:sistema.getVehiculos()) {
+		  if(act.getNropatente().contains(nropatente)) {
+			  act.setNropatente(newpatente);
+		  }
+	  }
+  }
   public void consultasCliente() {}
   public void consultasChofer() {}
   public void consultasVehiculo() {}
