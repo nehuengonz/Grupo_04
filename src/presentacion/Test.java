@@ -11,9 +11,9 @@ public class Test {
     ChoferContratado Chofer1 = new ChoferContratado("123456", "juan", 2000);
     ChoferContratado Chofer2 = new ChoferContratado("333333", "pablo", 12000);
     ChoferContratado Chofer3 = new ChoferContratado("111111", "pedro", 67000);
-    ChoferContratado Chofer4 = new ChoferContratado("999999", "yo", 1000);
+    ChoferContratado Chofer4 = new ChoferContratado("999999", "solari", 1000);
     ChoferPermanente chofer5=new ChoferPermanente("123124","persona1",100000,20);
-    ChoferTemporario chofer6=new ChoferTemporario("999999", "yo", 100000,20);
+    ChoferTemporario chofer6=new ChoferTemporario("666666", "yo", 100000,20);
     
     LocalDate l5=LocalDate.of(2000, 03, 3);
     chofer5.setFecha_ingreso(l5);
@@ -91,8 +91,8 @@ public class Test {
     } catch (Exception e) {
 
     }
-    ArrayList<ViajeAbstract> listaViajes = SYS.listadoViajes();
-    for(ViajeAbstract viaje : listaViajes)
+    
+    for(ViajeAbstract viaje : SYS.getViajes())
       System.out.println(viaje.getCosto());
 
     //salario mensual

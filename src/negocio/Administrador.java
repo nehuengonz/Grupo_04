@@ -114,9 +114,33 @@ public class Administrador extends Usuario {
 		  }
 	  }
   }
-  public void consultasCliente() {}
-  public void consultasChofer() {}
-  public void consultasVehiculo() {}
+  public Cliente consultasCliente(String usuario) {
+	  Cliente res=null;
+	  for(Cliente act:sistema.getClientes()) {
+		  if(act.getNombreUs().contains(usuario)) {
+			  res=act;
+		  }
+	  }
+	  return res;
+  }
+  public Chofer consultasChofer(String dni) {
+	  Chofer res=null;
+	  for(Chofer act:sistema.getChoferes()) {
+		  if(act.getDni().contains(dni)) {
+			  res=act;
+		  }
+	  }
+	  return res;
+  }
+  public Vehiculo consultasVehiculo(String patente) {
+	  Vehiculo res=null;
+	  for(Vehiculo act:sistema.getVehiculos()) {
+		  if(act.getNropatente().contains(patente)) {
+			  res=act;
+		  }
+	  }
+	  return res;
+  }
   /*
    * listadochoferes se refiere a pasar la array list al administrador no
 mostrarla public void ListadoChoferes(){ ArrayList<Chofer>
@@ -167,8 +191,12 @@ public void ListadoClientes() {
   public ArrayList<ViajeAbstract> listadoViajes() {
     return sistema.listadoViajes();
   }
-  public void salarioMensual(Chofer chof,LocalDate date) {
+  public void salarioMensual(Chofer chofer,LocalDate date) {
 	  double salario_mensual=0;
+	  for(Chofer act:sistema.getChoferes())
+	  {
+		
+	  }
 	  
   }
   
@@ -180,12 +208,11 @@ public void ListadoClientes() {
 		  }
 		  else if (act instanceof ChoferTemporario) {
 			  ChoferTemporario t=(ChoferTemporario)act;
+			  t.setCant_viajes(date);
+			  totcash+=t.getSueldoBruto();
 		  }else if (act instanceof ChoferContratado) {
 				  ChoferContratado c=(ChoferContratado) act;
-				  if(date.getMonthValue() == date.getMonthValue())
-				  {
 					  totcash+= c.getSueldoBruto(date);
-				  }
 			  }
 		  }
 	  return totcash;

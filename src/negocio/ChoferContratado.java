@@ -27,12 +27,13 @@ public class ChoferContratado extends Chofer{
         return ganancia_viaje;
     }
 
+    
     public double getSueldoBruto(LocalDate date) {
     	double sueldo=0;
        for(ViajeAbstract act:sistema.getViajes() ) {
     	   //comparo si es el mismo chofer y el mismo mes
     	   if (this== act.getChofer() && date.getMonthValue()== act.getPedido().getFecha().getMonthValue()) {
-    		   sueldo=act.getCosto()*ganancia_viaje;
+    		   sueldo+=act.getCosto()*ganancia_viaje;
     	   }
        }
         return sueldo;
