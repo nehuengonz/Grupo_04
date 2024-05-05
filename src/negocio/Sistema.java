@@ -5,13 +5,12 @@ import excepciones.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * @invariant choferes, vehiculos, clientes y viajes siempre distintos de null.
- */
 /**
- * clase que se encarga de todas las funcionalidades de la empresa, 
+ * Clase que se encarga de todas las funcionalidades de la empresa,
  * ademas e almacenar la informacion de todos los Choferes,vehiculos,clientes y viajes
  * es la clase principal del proyecto
+ * Invariantes:
+ * choferes, vehiculos, clientes y viajes siempre distintos de null.
  */
 public class Sistema {
 
@@ -55,11 +54,16 @@ public class Sistema {
    * Finalmente se asigna un chofer al viaje. Si no hay choferes disponibles,
    * lanza SinChoferDisponibleException. En cambio, si hay un chofer disponible,
    * se asigna y el viaje pasa a 'iniciado'.
+   * Precondiciones:
+   * pedido != null
+   * Invariantes:
+   * pedido pasado como parámetro no se modifica.
    * @param pedido
    * @throws Exception
    */
   public void procesarPedido(Pedido pedido)
       throws PedidoInvalidoException, SinVehiculosDisponiblesException, SinChoferDisponibleException {
+    assert pedido != null;
     Combi combi = getCombiDisponible();
     Automovil automovil = getAutomovilDisponible();
     Moto moto = getMotoDisponible();
@@ -79,13 +83,36 @@ public class Sistema {
     viajes.add(viaje);
   }
 
+  /**
+   * Precondiciones:
+   * pedido != null
+   * Invariantes:
+   * El pedido pasado como parámetro no se modifica.
+   * @param pedido
+   * @return
+   */
   private boolean pedidoValido(Pedido pedido) {
+    assert pedido != null;
     if(pedido.getCantPasajeros() > 10)
       return false;
     return pedido.getCantPasajeros() <= 4 || !pedido.isSPF();
   }
 
+  /**
+   * Precondiciones:
+   * pedido != null
+   * Postcondiciones:
+   * Retorna SinVehiculosDisponiblesException si todos los vehiculos pasados son null.
+   * Si no retorna el vehiculo con mayor prioridad de los 3 (puede ser null si ninguno de los vehiculos era apto para el pedido)
+   * @param pedido
+   * @param moto
+   * @param automovil
+   * @param combi
+   * @return
+   * @throws SinVehiculosDisponiblesException
+   */
   private Vehiculo vehiculoConMayorPrioridad(Pedido pedido, Moto moto, Automovil automovil, Combi combi) throws SinVehiculosDisponiblesException {
+    assert pedido != null;
     List<Vehiculo> vehiculos = new ArrayList<>();
     if(moto != null) vehiculos.add(moto);
     if(automovil != null) vehiculos.add(automovil);
