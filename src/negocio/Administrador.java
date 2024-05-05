@@ -191,13 +191,20 @@ public void ListadoClientes() {
   public ArrayList<ViajeAbstract> listadoViajes() {
     return sistema.listadoViajes();
   }
-  public void salarioMensual(Chofer chofer,LocalDate date) {
+  public double salarioMensual(Chofer chofer,LocalDate date) {
 	  double salario_mensual=0;
-	  for(Chofer act:sistema.getChoferes())
-	  {
-		
-	  }
-	  
+		  if ( chofer instanceof ChoferPermanente) {
+			  salario_mensual=chofer.getSueldoBruto();  
+			  }
+			  else if (chofer instanceof ChoferTemporario) {
+				  ChoferTemporario t=(ChoferTemporario)chofer;
+				  t.setCant_viajes(date);
+				  salario_mensual=t.getSueldoBruto();
+			  }else if (chofer instanceof ChoferContratado) {
+					  ChoferContratado c=(ChoferContratado) chofer;
+					  salario_mensual= c.getSueldoBruto(date);
+				  }
+	  return salario_mensual;
   }
   
   public double dineroNecesario(LocalDate date) {
