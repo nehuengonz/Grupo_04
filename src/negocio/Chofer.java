@@ -2,6 +2,8 @@ package negocio;
 
 /**
  * clase abstracta de los choferes de la empresa
+ * @Invariantes:
+ * dni y nombre != null
  */
 public abstract class Chofer {
   protected String dni;
@@ -17,11 +19,25 @@ public abstract class Chofer {
 
   public Chofer() { super(); }
 
-  public void setDni(String dni) { this.dni = dni; }
+  /**
+   * @Precondiciones:
+   * dni != null
+   * @param dni
+   */
+  public void setDni(String dni) {
+    assert dni != null;
+    this.dni = dni; }
 
   public String getDni() { return dni; }
 
-  public void setNombre(String nombre) { this.nombre = nombre; }
+  /**
+   * @Precondiciones:
+   * nombre != null
+   * @param nombre
+   */
+  public void setNombre(String nombre) {
+    assert nombre != null;
+    this.nombre = nombre; }
 
   public String getNombre() { return nombre; }
   public boolean getOcupado() { return ocupado; }
