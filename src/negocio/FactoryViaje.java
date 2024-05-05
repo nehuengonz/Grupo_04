@@ -18,7 +18,7 @@ public class FactoryViaje {
 	 * @param chofer
 	 * @return IViaje
 	 */
-	public static IViaje getViaje(Pedido pedido, Vehiculo vehiculo, Chofer chofer) {
+	public static ViajeAbstract getViaje(Pedido pedido, Vehiculo vehiculo, Chofer chofer) {
 		assert pedido != null;
 		assert vehiculo != null;
 		assert chofer != null;

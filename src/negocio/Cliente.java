@@ -2,6 +2,8 @@ package negocio;
 
 import excepciones.*;
 
+import java.util.ArrayList;
+
 /**
  * clase concreta de cliente extendida de usuario se encarga de la gestion y accesibilidad del cliente 
  * en sus viajes  realizados por la empresa
@@ -23,8 +25,10 @@ public class Cliente extends Usuario {
   public void pagaViaje(ViajeAbstract viaje) {
     sistema.procesarPago(viaje.getCosto());
   }
-  public void CalificaChofer() {
+  public void calificaChofer() {
     sistema.guardarCalificacionChofer();
   }
-  public void HistorialViajes() {}
+  public ArrayList<ViajeAbstract> historialViajes() {
+    return sistema.getViajesCliente(this);
+  }
 }
